@@ -3,25 +3,25 @@
 <!-- TOC -->
 
 * [目录](#目录)
-* [html + css [↑](#目录)](#html--css-↑目录)
-  * [css 盒模型 todo [↑](#目录)](#css-盒模型-todo-↑目录)
-  * [用 border 绘制三角形 [↑](#目录)](#用-border-绘制三角形-↑目录)
-  * [BFC todo [↑](#目录)](#bfc-todo-↑目录)
-  * [垂直居中 todo [↑](#目录)](#垂直居中-todo-↑目录)
-* [javascript [↑](#目录)](#javascript-↑目录)
-  * [冒泡/捕获 [↑](#目录)](#冒泡捕获-↑目录)
-  * [跨浏览器的事件处理程序 [↑](#目录)](#跨浏览器的事件处理程序-↑目录)
-  * [事件委托 [↑](#目录)](#事件委托-↑目录)
-  * [原型链 [↑](#目录)](#原型链-↑目录)
-  * [实现继承的几种方式 [↑](#目录)](#实现继承的几种方式-↑目录)
+* [html + css](#html--css)
+  * [css 盒模型 todo](#css-盒模型-todo)
+  * [用 border 绘制三角形](#用-border-绘制三角形)
+  * [BFC todo](#bfc-todo)
+  * [垂直居中 todo](#垂直居中-todo)
+* [javascript](#javascript)
+  * [冒泡/捕获](#冒泡捕获)
+  * [跨浏览器的事件处理程序](#跨浏览器的事件处理程序)
+  * [事件委托](#事件委托)
+  * [原型链](#原型链)
+  * [实现继承的几种方式](#实现继承的几种方式)
     * [优缺点对比：](#优缺点对比)
-  * [new 内部的原理 [↑](#目录)](#new-内部的原理-↑目录)
-  * [instanceof / typeof [↑](#目录)](#instanceof--typeof-↑目录)
-  * [this、call、apply、bind [↑](#目录)](#thiscallapplybind-↑目录)
-  * [作用域 [↑](#目录)](#作用域-↑目录)
-  * [闭包 [↑](#目录)](#闭包-↑目录)
-  * [造成内存泄漏的常见情况 [↑](#目录)](#造成内存泄漏的常见情况-↑目录)
-  * [ES6 [↑](#目录)](#es6-↑目录)
+  * [new 内部的原理](#new-内部的原理)
+  * [instanceof / typeof](#instanceof--typeof)
+  * [this、call、apply、bind](#thiscallapplybind)
+  * [作用域](#作用域)
+  * [闭包](#闭包)
+  * [造成内存泄漏的常见情况](#造成内存泄漏的常见情况)
+  * [ES6](#es6)
     * [Promise](#promise)
     * [async await](#async-await)
     * [generator](#generator)
@@ -31,44 +31,44 @@
     * [Interator / for of](#interator--for-of)
     * [Object 扩展](#object-扩展)
     * [Array 扩展](#array-扩展)
-  * [Array [↑](#目录)](#array-↑目录)
-  * [for in / for of todo [↑](#目录)](#for-in--for-of-todo-↑目录)
-  * [事件循环(EventLoop) [↑](#目录)](#事件循环eventloop-↑目录)
+  * [Array](#array)
+  * [for in / for of todo](#for-in--for-of-todo)
+  * [事件循环(EventLoop)](#事件循环eventloop)
     * [宏任务，微任务](#宏任务微任务)
-  * [递归 todo [↑](#目录)](#递归-todo-↑目录)
-  * [浅拷贝 深拷贝 [↑](#目录)](#浅拷贝-深拷贝-↑目录)
-  * [防抖、节流 [↑](#目录)](#防抖节流-↑目录)
-  * [柯里化 [↑](#目录)](#柯里化-↑目录)
-* [React [↑](#目录)](#react-↑目录)
-  * [生命周期 [↑](#目录)](#生命周期-↑目录)
-  * [组件之间怎么通信 [↑](#目录)](#组件之间怎么通信-↑目录)
-  * [react 中 key 的作用是什么 [↑](#目录)](#react-中-key-的作用是什么-↑目录)
-  * [diff 算法 [↑](#目录)](#diff-算法-↑目录)
-  * [function Component / class Component todo [↑](#目录)](#function-component--class-component-todo-↑目录)
-  * [Controlled Component / Uncontrolled Component todo [↑](#目录)](#controlled-component--uncontrolled-component-todo-↑目录)
-  * [ref todo [↑](#目录)](#ref-todo-↑目录)
-  * [react-redux todo [↑](#目录)](#react-redux-todo-↑目录)
-  * [组件的复用 [↑](#目录)](#组件的复用-↑目录)
-* [RN todo [↑](#目录)](#rn-todo-↑目录)
-* [浏览器 [↑](#目录)](#浏览器-↑目录)
-  * [session、cookie、localstorage、sessionStorage、IndexDB [↑](#目录)](#sessioncookielocalstoragesessionstorageindexdb-↑目录)
-  * [输入一个网址到页面展示，发生了什么事情 [↑](#目录)](#输入一个网址到页面展示发生了什么事情-↑目录)
-  * [TCP 三次握手 四次挥手 [↑](#目录)](#tcp-三次握手-四次挥手-↑目录)
-  * [常见状态码 [↑](#目录)](#常见状态码-↑目录)
-  * [http 请求头里都有什么内容 todo [↑](#目录)](#http-请求头里都有什么内容-todo-↑目录)
-  * [http 和 https 的区别 todo [↑](#目录)](#http-和-https-的区别-todo-↑目录)
-  * [跨域以及常见解决办法 [↑](#目录)](#跨域以及常见解决办法-↑目录)
-* [其他 [↑](#目录)](#其他-↑目录)
-  * [对前端模块化的理解 todo [↑](#目录)](#对前端模块化的理解-todo-↑目录)
-  * [CI/CD todo [↑](#目录)](#cicd-todo-↑目录)
+  * [递归 todo](#递归-todo)
+  * [浅拷贝 深拷贝](#浅拷贝-深拷贝)
+  * [防抖、节流](#防抖节流)
+  * [柯里化](#柯里化)
+* [React](#react)
+  * [生命周期](#生命周期)
+  * [组件之间怎么通信](#组件之间怎么通信)
+  * [react 中 key 的作用是什么](#react-中-key-的作用是什么)
+  * [diff 算法](#diff-算法)
+  * [function Component / class Component todo](#function-component--class-component-todo)
+  * [Controlled Component / Uncontrolled Component todo](#controlled-component--uncontrolled-component-todo)
+  * [ref todo](#ref-todo)
+  * [react-redux todo](#react-redux-todo)
+  * [组件的复用](#组件的复用)
+* [RN todo](#rn-todo)
+* [浏览器](#浏览器)
+  * [session、cookie、localstorage、sessionStorage、IndexDB](#sessioncookielocalstoragesessionstorageindexdb)
+  * [输入一个网址到页面展示，发生了什么事情](#输入一个网址到页面展示发生了什么事情)
+  * [TCP 三次握手 四次挥手](#tcp-三次握手-四次挥手)
+  * [常见状态码](#常见状态码)
+  * [http 请求头里都有什么内容 todo](#http-请求头里都有什么内容-todo)
+  * [http 和 https 的区别 todo](#http-和-https-的区别-todo)
+  * [跨域以及常见解决办法](#跨域以及常见解决办法)
+* [其他](#其他)
+  * [对前端模块化的理解 todo](#对前端模块化的理解-todo)
+  * [CI/CD todo](#cicd-todo)
 
 <!-- /TOC -->
 
-## html + css [↑](#目录)
+## html + css
 
-#### css 盒模型 todo [↑](#目录)
+#### css 盒模型 todo
 
-#### 用 border 绘制三角形 [↑](#目录)
+#### 用 border 绘制三角形
 
 ```
 width: 0;
@@ -79,13 +79,13 @@ border-color: transparent transparent lightblue;
 
 > 参考： [简书——CSS 绘制三角形](https://www.jianshu.com/p/9a463d50e441)
 
-#### BFC todo [↑](#目录)
+#### BFC todo
 
-#### 垂直居中 todo [↑](#目录)
+#### 垂直居中 todo
 
-## javascript [↑](#目录)
+## javascript
 
-#### 冒泡/捕获 [↑](#目录)
+#### 冒泡/捕获
 
 * DOM2 级事件规定的事件流包括三个阶段:
   * 事件捕获阶段
@@ -103,7 +103,7 @@ border-color: transparent transparent lightblue;
   },
   ```
 
-#### 跨浏览器的事件处理程序 [↑](#目录)
+#### 跨浏览器的事件处理程序
 
 * 实现
 
@@ -141,7 +141,7 @@ border-color: transparent transparent lightblue;
 
 > * 参考：[博客园——跨浏览器的事件对象](https://www.cnblogs.com/hykun/p/EventUtil.html)
 
-#### 事件委托 [↑](#目录)
+#### 事件委托
 
 * 用来解决事件处理程序过多的问题
 * 使用场景
@@ -173,7 +173,7 @@ border-color: transparent transparent lightblue;
 
 > 参考：[github——捕获与冒泡、事件处理程序、事件对象、跨浏览器、事件委托](https://github.com/amandakelake/blog/issues/38)
 
-#### 原型链 [↑](#目录)
+#### 原型链
 
 1.  实例的**proto** === 其构造函数的 prototype
     ![](https://note.youdao.com/yws/public/resource/5decefaed3b17cd4bab92965ace4d207/xmlnote/36A4E7356D3A42A6A8655EEEF65CEEB2/4117)
@@ -194,7 +194,7 @@ border-color: transparent transparent lightblue;
 > * 参考：这篇写的很好 多看几遍：[知乎——JavaScript 世界万物诞生记](https://zhuanlan.zhihu.com/p/22989691)
 > * 参考：这篇也可以 作为上面的补充：[CSDN——prototype、**proto**与 constructor](https://blog.csdn.net/cc18868876837/article/details/81211729)
 
-#### 实现继承的几种方式 [↑](#目录)
+#### 实现继承的几种方式
 
 * 假设有父类 Parent
 
@@ -295,7 +295,7 @@ border-color: transparent transparent lightblue;
 > * 参考：[TG——JavaScript 实现继承的方式](http://ghmagical.com/article/page/id/omIoPb1AIBPu)
 > * 参考：[ECMAScript 6 入门——class 的继承](http://es6.ruanyifeng.com/#docs/class-extends)
 
-#### new 内部的原理 [↑](#目录)
+#### new 内部的原理
 
 ```
 var a = new myFunction("Li","Cherry");
@@ -307,7 +307,7 @@ new myFunction{
 }
 ```
 
-#### instanceof / typeof [↑](#目录)
+#### instanceof / typeof
 
 * 例子
   ```
@@ -334,13 +334,13 @@ new myFunction{
     nicole instanceof programmer // true
     ```
 
-#### this、call、apply、bind [↑](#目录)
+#### this、call、apply、bind
 
 * 下面的文章写得好，多看几遍，懒得总结了
 * 参考：[掘金——this、apply、call、bind](https://juejin.im/post/59bfe84351882531b730bac2)
 * 参考：[掘金——this（他喵的）到底是什么 — 理解 JavaScript 中的 this、call、apply 和 bind](https://juejin.im/post/5b9f176b6fb9a05d3827d03f)
 
-#### 作用域 [↑](#目录)
+#### 作用域
 
 * 作用域链  
    在查找变量的时候，先在函数作用域中查找，没有找到，再去全局作用域中查找，有一个从里往外查找的过程。
@@ -363,7 +363,7 @@ new myFunction{
    动态作用域与词法作用域相反，函数的作用域是在函数调用的时候才决定的。  
    上面代码如果是动态作用域，则会输出 2
 
-#### 闭包 [↑](#目录)
+#### 闭包
 
 * 概念：闭包是一个可以访问它外部函数作用域的一个函数，即使这个外部函数已经返回了。
 * 闭包是一种现象，不用特意创建，有时候不知不觉就写出来了
@@ -427,14 +427,14 @@ new myFunction{
 > 参考：[掘金——闭包详解](https://juejin.im/post/5b081f8d6fb9a07a9b3664b6)  
 > 参考：[掘金——理解 JavaScript 闭包——新手指南](理解JavaScript闭包——新手指南)
 
-#### 造成内存泄漏的常见情况 [↑](#目录)
+#### 造成内存泄漏的常见情况
 
 * 意外的全局变量
 * 定时器未清除
 * dom 清空时，还存在引用
 * 闭包(好像只有 ie 会)
 
-#### ES6 [↑](#目录)
+#### ES6
 
 ###### Promise
 
@@ -853,7 +853,7 @@ new myFunction{
     // [2, 4, 3, 6, 4, 8]
     ```
 
-#### Array [↑](#目录)
+#### Array
 
 * forEach map reduce filter some every
   ![](https://note.youdao.com/yws/public/resource/9791688f8f13043d64eb2ded545dc193/xmlnote/B80B41925B7D4DAA92EB2A0A536DB6A9/4801)
@@ -863,9 +863,9 @@ new myFunction{
 * reduce todo
 * slice splice todo
 
-#### for in / for of todo [↑](#目录)
+#### for in / for of todo
 
-#### 事件循环(EventLoop) [↑](#目录)
+#### 事件循环(EventLoop)
 
 ![](https://note.youdao.com/yws/public/resource/9791688f8f13043d64eb2ded545dc193/xmlnote/CDE1E05AA6924122A3BC9793CF2C6D0E/5042)
 
@@ -923,9 +923,9 @@ new myFunction{
 
   > 写的比较简略，详情请看参考:[掘金——这一次，彻底弄懂 JavaScript 执行机制](https://juejin.im/post/59e85eebf265da430d571f89)
 
-#### 递归 todo [↑](#目录)
+#### 递归 todo
 
-#### 浅拷贝 深拷贝 [↑](#目录)
+#### 浅拷贝 深拷贝
 
 * 数据分为基本数据类型(String,Number,Boolean,Null,Undefined)和引用数据类型(Object,Array,Function)
 * 对于基本数据类型，浅拷贝深拷贝都是拷贝值，但对于引用数据类型，他们有以下区别
@@ -958,7 +958,7 @@ const deepClone = obj => {
 > * 参考：[掘金——浅拷贝与深拷贝](https://juejin.im/post/5b5dcf8351882519790c9a2e)
 > * 参考：[掘金——深拷贝 vs 浅拷贝](https://juejin.im/post/59ac1c4ef265da248e75892b)
 
-#### 防抖、节流 [↑](#目录)
+#### 防抖、节流
 
 * 防抖和节流的作用都是防止函数多次调用
 * 防抖：任务频繁触发的情况下，只有任务触发的间隔超过指定间隔的时候，任务才会执行。
@@ -1005,7 +1005,7 @@ const deepClone = obj => {
 > * 参考：[InterviewMap——防抖](https://yuchengkai.cn/docs/frontend/#%E9%98%B2%E6%8A%96)
 > * 参考：[github issues——节流和防抖的个人见解](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/5)
 
-#### 柯里化 [↑](#目录)
+#### 柯里化
 
 * 是高阶函数的一种特殊用法
 * 定义：接收函数 A 作为参数，运行后能够返回一个新的函数，并且这个新的函数能够处理函数 A 的剩余参数。
@@ -1048,9 +1048,9 @@ const deepClone = obj => {
   > * 参考：[简书——深入详解函数的柯里化](https://www.jianshu.com/p/5e1899fe7d6b)
   > * 参考：[segmentfault——简述几个非常有用的柯里化函数使用场景](https://segmentfault.com/a/1190000015281061)
 
-## React [↑](#目录)
+## React
 
-#### 生命周期 [↑](#目录)
+#### 生命周期
 
 * 创建阶段
   * constructor
@@ -1069,13 +1069,13 @@ const deepClone = obj => {
   > * 参考：[官网——React.Component](https://reactjs.org/docs/react-component.html)
   > * 参考：[官网——生命周期图](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
-#### 组件之间怎么通信 [↑](#目录)
+#### 组件之间怎么通信
 
 * 父级传给子级：this.props
 * 子级传给父级：ref
 * 跨组件传递：context，redux
 
-#### react 中 key 的作用是什么 [↑](#目录)
+#### react 中 key 的作用是什么
 
 * 为了在 diff 算法执行时更快的找到对应的节点，提高 diff 速度
 * key 变化的时候，节点会重新渲染
@@ -1086,7 +1086,7 @@ const deepClone = obj => {
   > 即把 C 更新成 F，D 更新成 C，E 更新成 D，最后再插入 E，是不是很没有效率？<br />
   > 所以可是使用 key 来给每个节点做一个唯一标识，Diff 算法就可以正确的识别此节点，找到正确的位置区插入新的节点。<br /> > ![](https://note.youdao.com/yws/public/resource/9791688f8f13043d64eb2ded545dc193/xmlnote/8E6617DF1C4E47D480CF5B377EF2A863/5403)
 
-#### diff 算法 [↑](#目录)
+#### diff 算法
 
 * render 执行的结果得到的不是真正的 DOM 节点，仅仅是轻量级的 JavaScript 对象, 我们称之为 virtual DOM.
 
@@ -1095,25 +1095,25 @@ const deepClone = obj => {
 > * 参考：[掘金——浅谈 React 中的 diff](https://juejin.im/post/5ac355576fb9a028cc616aad)
 > * 参考：[segmentfault——React 的 diff 算法](https://segmentfault.com/a/1190000000606216)
 
-#### function Component / class Component todo [↑](#目录)
+#### function Component / class Component todo
 
-#### Controlled Component / Uncontrolled Component todo [↑](#目录)
+#### Controlled Component / Uncontrolled Component todo
 
-#### ref todo [↑](#目录)
+#### ref todo
 
-#### react-redux todo [↑](#目录)
+#### react-redux todo
 
-#### 组件的复用 [↑](#目录)
+#### 组件的复用
 
 * High order component
 * render props
 * custom hooks
 
-## RN todo [↑](#目录)
+## RN todo
 
-## 浏览器 [↑](#目录)
+## 浏览器
 
-#### session、cookie、localstorage、sessionStorage、IndexDB [↑](#目录)
+#### session、cookie、localstorage、sessionStorage、IndexDB
 
 * cookie：保存在浏览器端， 大小 4K，可以设置过期时间
 * session：保存在服务器端，无大小限制
@@ -1122,7 +1122,7 @@ const deepClone = obj => {
   ![](https://user-gold-cdn.xitu.io/2018/12/14/167ac245e669b3b3?imageslim)
 * IndexDB: 支持的浏览器比较广泛，大小限制通常约为 50MB。
 
-#### 输入一个网址到页面展示，发生了什么事情 [↑](#目录)
+#### 输入一个网址到页面展示，发生了什么事情
 
 * DNS 解析:将域名解析成 IP 地址
 * TCP 连接：TCP 三次握手
@@ -1134,7 +1134,7 @@ const deepClone = obj => {
   > * 参考：[掘金——浏览器基础](https://juejin.im/post/5c137e7c6fb9a049f7461639#heading-2)
   > * 参考：[掘金——从 URL 输入到页面展现到底发生什么？](https://juejin.im/post/5bf3ad55f265da61682afc9b)
 
-#### TCP 三次握手 四次挥手 [↑](#目录)
+#### TCP 三次握手 四次挥手
 
 * 三次握手
   * 客户端发送 SYN 报文
@@ -1144,7 +1144,7 @@ const deepClone = obj => {
   > * 参考：动画讲解：[掘金——三次握手 四次挥手](https://juejin.im/post/5b29d2c4e51d4558b80b1d8c)
   > * 参考：[博客园——为什么不是 2 次握手或者其他次](https://www.cnblogs.com/zhuzhenwei918/p/7465467.html)
 
-#### 常见状态码 [↑](#目录)
+#### 常见状态码
 
 * 1xx 信息相关
 * 2XX 成功
@@ -1162,11 +1162,11 @@ const deepClone = obj => {
 * 5XX 服务器错误 - 500 internal sever error，表示服务器端在执行请求时发生了错误 - 503 service unavailable，服务不可用
   > * 记住上面这些面试应该够了，工作需要其他的直接去 google 吧~
 
-#### http 请求头里都有什么内容 todo [↑](#目录)
+#### http 请求头里都有什么内容 todo
 
-#### http 和 https 的区别 todo [↑](#目录)
+#### http 和 https 的区别 todo
 
-#### 跨域以及常见解决办法 [↑](#目录)
+#### 跨域以及常见解决办法
 
 * 浏览器有一个安全策略叫同源策略，同源就是要求, 域名, 协议, 端口相同，任意一个不同则叫不同域
 * 同源策略还会引起 Cookie、LocalStorage 和 IndexDB 无法读取
@@ -1207,8 +1207,8 @@ const deepClone = obj => {
     > * 参考：[segmentfault——浅谈浏览器端 JavaScript 跨域解决方法](https://segmentfault.com/a/1190000004518374)
     > * 参考：[简书——浏览器中使用 js 跨域获取数据的几种方式](https://www.jianshu.com/p/c71c20e98f94)
 
-## 其他 [↑](#目录)
+## 其他
 
-#### 对前端模块化的理解 todo [↑](#目录)
+#### 对前端模块化的理解 todo
 
-#### CI/CD todo [↑](#目录)
+#### CI/CD todo
