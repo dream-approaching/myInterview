@@ -24,7 +24,7 @@ border-color: transparent transparent lightblue;
 * DOM2 级事件规定的事件流包括三个阶段:
   * 事件捕获阶段
   * 处于目标阶段
-  * 事件冒泡阶段
+  * 事件冒泡阶段</br>
     ![](https://user-images.githubusercontent.com/25027560/38007715-4cc457d0-327d-11e8-9fb3-667fa75fc38c.png)
 * 阻止冒泡
   ```
@@ -73,7 +73,7 @@ border-color: transparent transparent lightblue;
     }
   ```
 
-  > * 参考：[博客园——跨浏览器的事件对象](https://www.cnblogs.com/hykun/p/EventUtil.html)
+> * 参考：[博客园——跨浏览器的事件对象](https://www.cnblogs.com/hykun/p/EventUtil.html)
 
 #### 事件委托
 
@@ -120,7 +120,7 @@ border-color: transparent transparent lightblue;
     console.log(Person.__proto__) // Function.prototype
     ```
 
-2.  `Function.__proto__ === Function.prototype`
+2.  `Function.__proto__ === Function.prototype`</br>
     ![](https://note.youdao.com/yws/public/resource/5decefaed3b17cd4bab92965ace4d207/xmlnote/E02A3DBFB32641C7A10EBC8982CCB875/4114)
 3.  原型链的最顶层都是 null
     > * 参考：这篇写的很好 多看几遍：[知乎——JavaScript 世界万物诞生记](https://zhuanlan.zhihu.com/p/22989691)
@@ -419,6 +419,7 @@ new myFunction{
   * Generator 函数的返回值是 Iterator 对象，async 函数的返回值是 Promise 对象
 * 遇到 await 表达式时，会让 async 函数 暂停执行，等到 await 后面的语句（Promise）状态发生改变（resolved 或者 rejected）之后，再恢复 async 函数的执行（再之后 await 下面的语句），并返回解析值（Promise 的值）
 * 例子
+
   ```
     async function async1(){
         console.log('async1 start')
@@ -450,6 +451,7 @@ new myFunction{
     // promise2
     // setTimeout
   ```
+
   > 参考：[掘金——前端 er，你真的会用 async 吗？](https://juejin.im/post/5c0397186fb9a049b5068e54)
 
 ###### generator
@@ -867,8 +869,21 @@ new myFunction{
   * 扩展运算符 ...
   * Array.prototype.concat()
   * Object.assign() `当Object只有一层的时候是深拷贝`
-* 常见深拷贝方法 - JSON.parse(JSON.stringify()) `但是JSON.stringify无法处理函数` - lodash 方法 `lodash.cloneDeep()` - 利用递归实现
-  `const deepClone = obj => { let clone = Object.assign({}, obj); Object.keys(clone).forEach( key => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]) ); return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone; };`
+* 常见深拷贝方法
+  * JSON.parse(JSON.stringify()) `但是JSON.stringify无法处理函数`
+  * lodash 方法 `lodash.cloneDeep()`
+  * 利用递归实现
+
+
+  ```
+  const deepClone = obj => {
+    let clone = Object.assign({}, obj);
+    Object.keys(clone).forEach(
+      key => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key])
+    );
+    return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone;
+  };
+  ```
   > * 参考：[知乎——javascript 中的深拷贝和浅拷贝？](https://www.zhihu.com/question/23031215)
   > * 参考：[掘金——浅拷贝与深拷贝](https://juejin.im/post/5b5dcf8351882519790c9a2e)
   > * 参考：[掘金——深拷贝 vs 浅拷贝](https://juejin.im/post/59ac1c4ef265da248e75892b)
