@@ -104,7 +104,8 @@ border-color: transparent transparent lightblue;
       }
     }
   ```
-  > 参考：[github——捕获与冒泡、事件处理程序、事件对象、跨浏览器、事件委托](https://github.com/amandakelake/blog/issues/38)
+
+> 参考：[github——捕获与冒泡、事件处理程序、事件对象、跨浏览器、事件委托](https://github.com/amandakelake/blog/issues/38)
 
 #### 原型链
 
@@ -123,8 +124,9 @@ border-color: transparent transparent lightblue;
 2.  `Function.__proto__ === Function.prototype`</br>
     ![](https://note.youdao.com/yws/public/resource/5decefaed3b17cd4bab92965ace4d207/xmlnote/E02A3DBFB32641C7A10EBC8982CCB875/4114)
 3.  原型链的最顶层都是 null
-    > * 参考：这篇写的很好 多看几遍：[知乎——JavaScript 世界万物诞生记](https://zhuanlan.zhihu.com/p/22989691)
-    > * 参考：这篇也可以 作为上面的补充：[CSDN——prototype、**proto**与 constructor](https://blog.csdn.net/cc18868876837/article/details/81211729)
+
+> * 参考：这篇写的很好 多看几遍：[知乎——JavaScript 世界万物诞生记](https://zhuanlan.zhihu.com/p/22989691)
+> * 参考：这篇也可以 作为上面的补充：[CSDN——prototype、**proto**与 constructor](https://blog.csdn.net/cc18868876837/article/details/81211729)
 
 #### 实现继承的几种方式
 
@@ -356,8 +358,8 @@ new myFunction{
     }// 1 2 3 4 5 6 7 8 9
   ```
 
-  > 参考：[掘金——闭包详解](https://juejin.im/post/5b081f8d6fb9a07a9b3664b6)  
-  > 参考：[掘金——理解 JavaScript 闭包——新手指南](理解JavaScript闭包——新手指南)
+> 参考：[掘金——闭包详解](https://juejin.im/post/5b081f8d6fb9a07a9b3664b6)  
+> 参考：[掘金——理解 JavaScript 闭包——新手指南](理解JavaScript闭包——新手指南)
 
 #### 造成内存泄漏的常见情况
 
@@ -452,7 +454,7 @@ new myFunction{
     // setTimeout
   ```
 
-  > 参考：[掘金——前端 er，你真的会用 async 吗？](https://juejin.im/post/5c0397186fb9a049b5068e54)
+> 参考：[掘金——前端 er，你真的会用 async 吗？](https://juejin.im/post/5c0397186fb9a049b5068e54)
 
 ###### generator
 
@@ -789,7 +791,9 @@ new myFunction{
 
 * forEach map reduce filter some every
   ![](https://note.youdao.com/yws/public/resource/9791688f8f13043d64eb2ded545dc193/xmlnote/B80B41925B7D4DAA92EB2A0A536DB6A9/4801)
-  > 参考 [掘金——数组迭代方法图解](https://juejin.im/post/5835808067f3560065ed4ab2)
+
+> 参考 [掘金——数组迭代方法图解](https://juejin.im/post/5835808067f3560065ed4ab2)
+
 * reduce todo
 * slice splice todo
 
@@ -874,19 +878,19 @@ new myFunction{
   * lodash 方法 `lodash.cloneDeep()`
   * 利用递归实现
 
+```
+const deepClone = obj => {
+  let clone = Object.assign({}, obj);
+  Object.keys(clone).forEach(
+    key => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key])
+  );
+  return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone;
+};
+```
 
-  ```
-  const deepClone = obj => {
-    let clone = Object.assign({}, obj);
-    Object.keys(clone).forEach(
-      key => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key])
-    );
-    return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone;
-  };
-  ```
-  > * 参考：[知乎——javascript 中的深拷贝和浅拷贝？](https://www.zhihu.com/question/23031215)
-  > * 参考：[掘金——浅拷贝与深拷贝](https://juejin.im/post/5b5dcf8351882519790c9a2e)
-  > * 参考：[掘金——深拷贝 vs 浅拷贝](https://juejin.im/post/59ac1c4ef265da248e75892b)
+> * 参考：[知乎——javascript 中的深拷贝和浅拷贝？](https://www.zhihu.com/question/23031215)
+> * 参考：[掘金——浅拷贝与深拷贝](https://juejin.im/post/5b5dcf8351882519790c9a2e)
+> * 参考：[掘金——深拷贝 vs 浅拷贝](https://juejin.im/post/59ac1c4ef265da248e75892b)
 
 #### 防抖、节流
 
@@ -930,9 +934,10 @@ new myFunction{
     };
   };
   ```
-  > * 参考：[掘金——函数节流与函数防抖](https://juejin.im/entry/58c0379e44d9040068dc952f)
-  > * 参考：[InterviewMap——防抖](https://yuchengkai.cn/docs/frontend/#%E9%98%B2%E6%8A%96)
-  > * 参考：[github issues——节流和防抖的个人见解](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/5)
+
+> * 参考：[掘金——函数节流与函数防抖](https://juejin.im/entry/58c0379e44d9040068dc952f)
+> * 参考：[InterviewMap——防抖](https://yuchengkai.cn/docs/frontend/#%E9%98%B2%E6%8A%96)
+> * 参考：[github issues——节流和防抖的个人见解](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/5)
 
 #### 柯里化
 
@@ -1009,10 +1014,20 @@ new myFunction{
 * 为了在 diff 算法执行时更快的找到对应的节点，提高 diff 速度
 * key 变化的时候，节点会重新渲染
 * map 的时候尽量不要用 index 做 key 值
+  > 举例： 如果希望可以在 B 和 C 之间加一个 F
+  > Diff 算法默认执行起来是这样的
+  > ![](https://note.youdao.com/yws/public/resource/9791688f8f13043d64eb2ded545dc193/xmlnote/89713889899F496AB5A92E2A52B8A163/5375)
+  > 即把 C 更新成 F，D 更新成 C，E 更新成 D，最后再插入 E，是不是很没有效率？<br />
+  > 所以可是使用 key 来给每个节点做一个唯一标识，Diff 算法就可以正确的识别此节点，找到正确的位置区插入新的节点。<br /> > ![](https://note.youdao.com/yws/public/resource/9791688f8f13043d64eb2ded545dc193/xmlnote/8E6617DF1C4E47D480CF5B377EF2A863/5403)
 
 #### diff 算法
 
-* vue 和 react 都是采用 diff 算法来对比新旧虚拟节点
+* render 执行的结果得到的不是真正的 DOM 节点，仅仅是轻量级的 JavaScript 对象, 我们称之为 virtual DOM.
+
+> 内容太多了，需要深究，被问到就先答一下 key 的重要性
+>
+> * 参考：[掘金——浅谈 React 中的 diff](https://juejin.im/post/5ac355576fb9a028cc616aad)
+> * 参考：[segmentfault——React 的 diff 算法](https://segmentfault.com/a/1190000000606216)
 
 #### function Component / class Component todo
 
@@ -1024,9 +1039,9 @@ new myFunction{
 
 #### 组件的复用
 
-> * High order component
-> * render props
-> * custom hooks
+* High order component
+* render props
+* custom hooks
 
 ## RN todo
 
