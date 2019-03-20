@@ -56,7 +56,7 @@
   * [TCP 三次握手 四次挥手](#tcp-三次握手-四次挥手)
   * [常见状态码](#常见状态码)
   * [http 请求头里都有什么内容 todo](#http-请求头里都有什么内容-todo)
-  * [http 和 https 的区别 todo](#http-和-https-的区别-todo)
+  * [http 和 https 的区别](#http-和-https-的区别)
   * [跨域以及常见解决办法](#跨域以及常见解决办法)
 * [其他](#其他)
   * [对前端模块化的理解 todo](#对前端模块化的理解-todo)
@@ -1168,7 +1168,12 @@ const deepClone = obj => {
 
 #### http 请求头里都有什么内容 todo
 
-#### http 和 https 的区别 todo
+#### http 和 https 的区别
+
+* HTTPS 协议需要到 CA 申请证书，一般免费证书很少，需要交费
+* HTTP 协议运行在 TCP 之上，所有传输的内容都是明文，HTTPS 运行在 SSL/TLS 之上，SSL/TLS 运行在 TCP 之上，所有传输的内容都经过加密的。
+* HTTP 和 HTTPS 使用的是完全不同的连接方式，用的端口也不一样，前者是 80，后者是 443。
+* HTTPS 可以有效的防止运营商劫持
 
 #### 跨域以及常见解决办法
 
