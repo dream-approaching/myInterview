@@ -1,8 +1,7 @@
-## 目录
+
 
 <!-- TOC -->
 
-- [目录](#目录)
 - [html + css](#html--css)
     - [css 盒模型 todo](#css-盒模型-todo)
     - [用 border 绘制三角形](#用-border-绘制三角形)
