@@ -923,7 +923,7 @@ new myFunction{
   // 1，7，6，8，2，4，3，5，9，11，10，12
   ```
 
-  > 写的比较简略，详情请看参考:[掘金——这一次，彻底弄懂 JavaScript 执行机制](https://juejin.im/post/59e85eebf265da430d571f89)
+  > 写的比较简略，详情请看参考:[掘金——这一次，彻底弄懂 JavaScript 执行机制](https://segmentfault.com/a/1190000018227028)
 
 #### 递归 todo
 
