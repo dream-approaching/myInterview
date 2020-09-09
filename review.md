@@ -950,7 +950,7 @@ new myFunction{
   * lodash 方法 `lodash.cloneDeep()`
   * 利用递归实现
 
-```
+```js
 const deepClone = obj => {
   let clone = Object.assign({}, obj);
   Object.keys(clone).forEach(
@@ -972,7 +972,7 @@ const deepClone = obj => {
     * input 在 onchange 时候的触发(用户输入验证/搜索等)
     * 按钮重复点击(也是一种场景，不过我习惯用 btnLoading)
   * 代码实现
-    ```
+    ```js
     // 简单实现
     const debounce = (fn, ms = 0) => {
       let timeoutId;
@@ -984,7 +984,7 @@ const deepClone = obj => {
     // 参考二有更好的方式
     ```
 * 节流：指定时间间隔内只会执行一次任务； - 应用场景(有间隔地持续执行) - 鼠标滚动时会执行的函数 - 窗口 resize - 拖拽(slider) - 代码实现
-  ```
+  ```js
   const throttle = (fn, wait) => {
     let inThrottle, lastFn, lastTime;
     return function() {
@@ -1018,7 +1018,7 @@ const deepClone = obj => {
 * 实现
   * lodash.curry()
   * 简单实现，参数只能从右到左传递
-    ```
+    ```js
     function createCurry(func, args) {
         var arity = func.length;
         var args = args || [];
@@ -1035,12 +1035,12 @@ const deepClone = obj => {
     }
     ```
   * 30 seconds of code:
-    ```
+    ```js
     const curry = (fn, arity = fn.length, ...args) =>
       arity <= args.length ? fn(...args) : curry.bind(null, fn, arity, ...args);
     ```
 * 例子
-  ```
+  ```js
   function add(a, b, c) {
       return a + b + c;
   }
@@ -1096,10 +1096,27 @@ const deepClone = obj => {
 
 * render 执行的结果得到的不是真正的 DOM 节点，仅仅是轻量级的 JavaScript 对象, 我们称之为 virtual DOM.
 
-> 内容太多了，需要深究，被问到就先答一下 key 的重要性
->
+react 16.0之前和之后的Diff算法有很大不同，[老的Diff算法](https://zhuanlan.zhihu.com/p/20346379)比较复杂，16.0版本发布了`React Fiber`对Diff算法重新实现了，耗时2年多
+
+老的 Diff 算法提出了三个策略来保证整体界面构建的性能，具体是：
+
+- Web UI 中 DOM 节点跨层级的移动操作特别少，可以忽略不计。
+- 拥有相同类的两个组件将会生成相似的树形结构，拥有不同类的两个组件将会生成不同的树形结构。
+- 对于同一层级的一组子节点，它们可以通过唯一 id 进行区分。
+
+React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍历，算法是建立在一个节点的插入、删除、移动等操作都是在节点树的同一层级中进行的。
+对于 Diff， 新老节点的对比，我们以新节点为标准，然后来构建整个 currentInWorkProgress，对于新的 children 会有四种情况。
+- TextNode(包含字符串和数字)
+- 单个 React Element(通过该节点是否有 ?typeof 区分)
+- 数组
+- 可迭代的 children，跟数组的处理方式差不多
+
+
+> * 参考：[Deep In React之浅谈 React Fiber 架构(一)](https://mp.weixin.qq.com/s/dONYc-Y96baiXBXpwh1w3A)
+> * 参考：[Deep In React 之详谈 React 16 Diff 策略(二)](https://juejin.im/post/6844903901590716429)
 > * 参考：[掘金——浅谈 React 中的 diff](https://juejin.im/post/5ac355576fb9a028cc616aad)
 > * 参考：[segmentfault——React 的 diff 算法](https://segmentfault.com/a/1190000000606216)
+> * 参考：[React Fiber是什么](https://zhuanlan.zhihu.com/p/26027085)
 
 #### function Component / class Component todo
 
