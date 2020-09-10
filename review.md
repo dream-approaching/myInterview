@@ -31,7 +31,7 @@
         - [Object 扩展](#object-扩展)
         - [Array 扩展](#array-扩展)
     - [Array](#array)
-    - [for in / for of todo](#for-in--for-of-todo)
+    - [for in / for of](#for-in--for-of)
     - [事件循环(EventLoop)](#事件循环eventloop)
         - [宏任务，微任务](#宏任务微任务)
     - [递归 todo](#递归-todo)
@@ -430,7 +430,7 @@ new myFunction{
   ```
 
 > 参考：[掘金——闭包详解](https://juejin.im/post/5b081f8d6fb9a07a9b3664b6)  
-> 参考：[掘金——理解 JavaScript 闭包——新手指南](理解JavaScript闭包——新手指南)
+> 参考：[掘金——理解 JavaScript 闭包——新手指南](https://juejin.im/post/6844903726205911053)
 
 #### 造成内存泄漏的常见情况
 
@@ -439,6 +439,12 @@ new myFunction{
 * dom 清空时，还存在引用
 * 闭包(好像只有 ie 会)
 
+```js
+var a = {a: 1, b:2,c:3,d:4}
+for(let v of a) {
+  console.log(v); // red green blue
+}
+```
 #### ES6
 
 ###### Promise
@@ -861,14 +867,19 @@ new myFunction{
 #### Array
 
 * forEach map reduce filter some every
-  ![](https://note.youdao.com/yws/public/resource/9791688f8f13043d64eb2ded545dc193/xmlnote/B80B41925B7D4DAA92EB2A0A536DB6A9/4801)
-
+  ![](https://raw.githubusercontent.com/dream-approaching/pictureMaps/master/img/arr.png)
 > 参考 [掘金——数组迭代方法图解](https://juejin.im/post/5835808067f3560065ed4ab2)
 
 * reduce todo
 * slice splice todo
 
-#### for in / for of todo
+#### for in / for of 
+- 推荐在循环对象属性的时候，使用for...in,在遍历数组的时候的时候使用for...of。
+- for...in循环出的是key，for...of循环出的是value
+- 注意，for...of是ES6新引入的特性。修复了ES5引入的for...in的不足
+- for...of不能循环普通的对象，需要通过和Object.keys()搭配使用
+
+> 参考 [javascript中for of和for in的区别？](https://segmentfault.com/q/1010000006658882)
 
 #### 事件循环(EventLoop)
 
@@ -932,6 +943,7 @@ new myFunction{
 
 #### 浅拷贝 深拷贝
 
+
 * 数据分为基本数据类型(String,Number,Boolean,Null,Undefined)和引用数据类型(Object,Array,Function)
 * 对于基本数据类型，浅拷贝深拷贝都是拷贝值，但对于引用数据类型，他们有以下区别
   * 浅拷贝只复制某个对象的地址，新旧对象还是共享同一块内存
@@ -954,6 +966,7 @@ new myFunction{
   * 利用递归实现
 
 ```js
+// 精简
 const deepClone = obj => {
   let clone = Object.assign({}, obj);
   Object.keys(clone).forEach(
@@ -961,6 +974,22 @@ const deepClone = obj => {
   );
   return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone;
 };
+
+// 易读
+const deepClone = obj => {
+  const clone = Object.assign({}, obj);
+  Object.keys(key => {
+    clone[key] = obj[key];
+    if (typeof obj[key] === 'object') {
+      clone[key] = deepClone(clone[key])
+    }
+  })
+  if (Array.isArray(obj)) {
+    clone.length = obj.length
+    return Array.from(clone)
+  }
+  return clone;
+}
 ```
 
 > * 参考：[知乎——javascript 中的深拷贝和浅拷贝？](https://www.zhihu.com/question/23031215)
@@ -986,25 +1015,29 @@ const deepClone = obj => {
     };
     // 参考二有更好的方式
     ```
-* 节流：指定时间间隔内只会执行一次任务； - 应用场景(有间隔地持续执行) - 鼠标滚动时会执行的函数 - 窗口 resize - 拖拽(slider) - 代码实现
+* 节流：指定时间间隔内只会执行一次任务； 
+  - 应用场景(有间隔地持续执行) 
+    - 鼠标滚动时会执行的函数 
+    - 窗口 resize 
+    - 拖拽(slider) 
+  - 代码实现
   ```js
-  const throttle = (fn, wait) => {
-    let inThrottle, lastFn, lastTime;
-    return function() {
-      const context = this,
-        args = arguments;
-      if (!inThrottle) {
-        fn.apply(context, args);
-        lastTime = Date.now();
-        inThrottle = true;
+  const throttle = (fn, ms) => {
+    let canRun = true
+    let timer
+    let lastTime = Date.now()
+    return function(...args) {
+      if (canRun) {
+        fn.apply(this, args);
+        canRun = false;
       } else {
-        clearTimeout(lastFn);
-        lastFn = setTimeout(function() {
-          if (Date.now() - lastTime >= wait) {
-            fn.apply(context, args);
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          if (Date.now() - lastTime >= ms) {
+            fn.apply(this, args);
             lastTime = Date.now();
           }
-        }, Math.max(wait - (Date.now() - lastTime), 0));
+        }, Math.max(ms - (Date.now() - lastTime), 0));
       }
     };
   };
