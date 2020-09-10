@@ -72,7 +72,7 @@
 
 #### 用 border 绘制三角形
 
-```
+```css
 width: 0;
 height: 0;
 border: 30px solid;
@@ -95,7 +95,7 @@ border-color: transparent transparent lightblue;
   * 事件冒泡阶段</br>
     ![](https://user-images.githubusercontent.com/25027560/38007715-4cc457d0-327d-11e8-9fb3-667fa75fc38c.png)
 * 阻止冒泡
-  ```
+  ```js
   function stopPropagation(event){
     if(event.stopPropagation){
        event.stopPropagation();
@@ -109,7 +109,7 @@ border-color: transparent transparent lightblue;
 
 * 实现
 
-  ```
+  ```js
     var EventUtil = {
       addHandler: (element, type, handler) => {},
 
@@ -147,7 +147,7 @@ border-color: transparent transparent lightblue;
 
 * 用来解决事件处理程序过多的问题
 * 使用场景
-  ```
+  ```js
     // 假设有如下页面结构
     <ul id="myLinks">
       <li id="goSomewhere">Go somewhere</li>
@@ -180,7 +180,7 @@ border-color: transparent transparent lightblue;
 1.  实例的**proto** === 其构造函数的 prototype
     ![](https://note.youdao.com/yws/public/resource/5decefaed3b17cd4bab92965ace4d207/xmlnote/36A4E7356D3A42A6A8655EEEF65CEEB2/4117)
 
-    ```
+    ```js
     function Person(name) {
         this.name = name
     }
@@ -200,7 +200,7 @@ border-color: transparent transparent lightblue;
 
 * 假设有父类 Parent
 
-  ```
+  ```js
   function Parent(name, age) {
     this.name = name;
     this.age = age;
@@ -212,7 +212,7 @@ border-color: transparent transparent lightblue;
   ```
 
 * 原型链继承
-  ```
+  ```js
   function Child() {
     this.type = 'child';
   }
@@ -227,7 +227,7 @@ border-color: transparent transparent lightblue;
   console.log(b.colors) // ["red","blue","yellow","black"]
   ```
 * 构造函数继承
-  ```
+  ```js
   function Child(name, age){
       Parent.call(this, name, age); // 或apply
   }
@@ -241,7 +241,7 @@ border-color: transparent transparent lightblue;
   console.log(child1.showName()) // Uncaught TypeError: child1.showName is not a function
   ```
 * 组合继承(原型链+构造函数)
-  ```
+  ```js
   function Child(name, age){
       Parent.call(this, name, age); // 构造函数继承
   }
@@ -254,7 +254,7 @@ border-color: transparent transparent lightblue;
   console.log(child1.showName()) // longzi
   ```
 * Object.create() (网上所谓的寄生组合式继承，太 tm 抽象了，听了名字就害怕)
-  ```
+  ```js
   function Child(name, age){
       Parent.call(this, name, age); // 构造函数继承
   }
@@ -268,7 +268,7 @@ border-color: transparent transparent lightblue;
   console.log(child1.showName()) // longzi
   ```
 * ES6: extends
-  ```
+  ```js
   class Parent {
   }
   class Child1 extends Parent {
@@ -299,7 +299,7 @@ border-color: transparent transparent lightblue;
 
 #### new 内部的原理
 
-```
+```js
 var a = new myFunction("Li","Cherry");
 new myFunction{
     var obj = {}; // 创建一个空对象 obj
@@ -312,7 +312,7 @@ new myFunction{
 #### instanceof / typeof
 
 * 例子
-  ```
+  ```js
   let s = new String('abc');
   typeof s // object
   s instanceof String // true
@@ -327,7 +327,7 @@ new myFunction{
 * instanceof
   * 主要的作用就是判断一个实例是否属于某种类型
   * 也可以判断一个实例是否是其父类型或者祖先类型的实例
-    ```
+    ```js
     const person = function () {}
     const programmer = function () {}
     programmer.prototype = new person()
@@ -349,7 +349,7 @@ new myFunction{
   ![image](https://note.youdao.com/yws/public/resource/9791688f8f13043d64eb2ded545dc193/xmlnote/F1866E20E2F34E769495F1BEF73D6803/4723)
 * 词法作用域(静态作用域)  
    JavaScript 采用的是词法作用域，函数的作用域在函数定义的时候就决定了，即在书写代码时就确定了
-  ```
+  ```js
   var value = 1;
   function foo() {
       console.log(value);
@@ -375,7 +375,7 @@ new myFunction{
   * 闭包引用外部函数变量对象中的值
   * 在外部函数的外部调用闭包。
 * 例子 1：
-  ```
+  ```js
   function person() {
     let name = 'Peter';
     return function displayName() {
@@ -388,7 +388,7 @@ new myFunction{
   // 所以displayName函数实际上是一个闭包。
   ```
 * 例子 2：
-  ```
+  ```js
   function getCounter() {
     let counter = 0;
     return function() {
@@ -404,7 +404,7 @@ new myFunction{
   ```
 * 常见闭包面试题
 
-  ```
+  ```js
     for (var i = 1; i < 10; i++) {
     	setTimeout(function () {
     		console.log(i);
@@ -443,7 +443,7 @@ new myFunction{
 * resolve 函数在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；
 * reject 函数，在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。
 * Promise.prototype.finally()：用于指定不管 Promise 对象最后状态如何，都会执行的操作。该方法是 ES2018 引入标准的。
-  ```
+  ```js
   promise
   .then(result => {···})
   .catch(error => {···})
@@ -453,7 +453,7 @@ new myFunction{
   * 用于将多个 Promise 实例，包装成一个新的 Promise 实例
   * 接受一个数组作为参数，p1、p2、p3 都是 Promise 实例，如果不是，就会先调用 Promise.resolve 方法，将参数转为 Promise 实例
   * Promise.all 方法的参数可以不是数组，但必须具有 Iterator 接口，且返回的每个成员都是 Promise 实例。
-    ```
+    ```js
     const p = Promise.all([p1, p2, p3]);
     // 只有p1、p2、p3的状态都变成fulfilled，p的状态才会变成fulfilled，此时p1、p2、p3的返回值组成一个数组，传递给p的回调函数。
     // 只要p1、p2、p3之中有一个被rejected，p的状态就变成rejected，此时第一个被reject的实例的返回值，会传递给p的回调函数。
@@ -461,7 +461,7 @@ new myFunction{
 * Promise.race()
   * 基本语法与 Promise.all()类似
   * 返回的规则不同
-    ```
+    ```js
     const p = Promise.race([p1, p2, p3]);
     // 只要p1、p2、p3之中有一个实例率先改变状态，p的状态就跟着改变。
     // 率先改变的 Promise 实例的返回值，就传递给p的回调函数
@@ -469,7 +469,7 @@ new myFunction{
 * Promise.resolve(): 将现有对象转为 Promise 对象
 * Promise.reject(reason): 返回一个新的 Promise 实例，该实例的状态为 rejected
 
-  ```
+  ```js
   const p = Promise.reject('出错了');
   // 等同于
   const p = new Promise((resolve, reject) => reject('出错了'))
@@ -490,7 +490,7 @@ new myFunction{
 * 遇到 await 表达式时，会让 async 函数 暂停执行，等到 await 后面的语句（Promise）状态发生改变（resolved 或者 rejected）之后，再恢复 async 函数的执行（再之后 await 下面的语句），并返回解析值（Promise 的值）
 * 例子
 
-  ```
+  ```js
     async function async1(){
         console.log('async1 start')
         await async2()
@@ -530,7 +530,7 @@ new myFunction{
 * 调用 Generator 函数后，该函数并不执行，返回的也不是函数运行结果，而是一个指向内部状态的指针对象，必须调用遍历器对象的 next 方法，使得指针移向下一个状态
 * 换言之，Generator 函数是分段执行的，yield 表达式是暂停执行的标记，而 next 方法可以恢复执行
 
-  ```
+  ```js
   function* helloWorldGenerator() {
     yield 'hello';
     yield 'world';
@@ -546,7 +546,7 @@ new myFunction{
 
 * Generator 函数可以不用 yield 表达式，这时就变成了一个单纯的暂缓执行函数。
 * 语法：下面四种都行
-  ```
+  ```js
   function * foo(x, y) { ··· }
   function *foo(x, y) { ··· }
   function* foo(x, y) { ··· }
@@ -562,7 +562,7 @@ new myFunction{
   * 在 Generator 函数内部，调用另一个 Generator 函数，默认情况下是没有效果的
   * yield\*表达式，用来在一个 Generator 函数里面执行另一个 Generator 函数
 
-    ```
+    ```js
     function* bar() {
       yield 'x';
       yield* foo();
@@ -599,7 +599,7 @@ new myFunction{
 
   * for...of 循环可以自动遍历 Generator 函数运行时生成的 Iterator 对象，且此时不再需要调用 next 方法。
 
-    ```
+    ```js
     function* foo() {
       yield 1;
       yield 2;
@@ -628,7 +628,7 @@ new myFunction{
   * Set 本身是一个构造函数，用来生成 Set 数据结构。
   * Set 函数可以接受一个数组（或者具有 iterable 接口的其他数据结构）作为参数
 
-    ```
+    ```js
     const s = new Set();
     [2, 3, 5, 4, 5, 2, 2].forEach(x => s.add(x));
     for (let i of s) {
@@ -640,14 +640,14 @@ new myFunction{
     ```
 
   * Array.from 方法可以将 Set 结构转为数组。
-    ```
+    ```js
     const items = new Set([1, 2, 3, 4, 5]);
     const array = Array.from(items);
     console.log(array) // [1, 2, 3, 4, 5]
     ```
   * 使用 Set 可以很容易地实现并集、交集和差集
 
-    ```
+    ```js
     let a = new Set([1, 2, 3]);
     let b = new Set([4, 3, 2]);
 
@@ -683,7 +683,7 @@ new myFunction{
 
     * set(key, value)：set 方法设置键名 key 对应的键值为 value，然后返回整个 Map 结构
 
-      ```
+      ```js
       const m = new Map();
 
       m.set('edition', 6)        // 键是字符串
@@ -713,7 +713,7 @@ new myFunction{
 * Symbol 函数前不能使用 new 命令，否则会报错
 * Symbol 函数可以接受一个字符串作为参数，表示对 Symbol 实例的描述，主要是为了在控制台显示，或者转为字符串时，比较容易区分。
 
-  ```
+  ```js
     let s = Symbol();
     typeof s // "symbol"
 
@@ -758,7 +758,7 @@ new myFunction{
   * 作用与**proto**相同，用来设置一个对象的 prototype 对象，返回参数对象本身
   * 语法：Object.setPrototypeOf(object, prototype)
   * 等同于
-    ```
+    ```js
     function setPrototypeOf(obj, proto) {
       obj.__proto__ = proto;
       return obj;
@@ -771,7 +771,7 @@ new myFunction{
   * ES5 引入
   * 返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名。
   * 例子：
-    ```
+    ```js
     var obj = { foo: 'bar', baz: 42 };
     Object.keys(obj)
     // ["foo", "baz"]
@@ -780,7 +780,7 @@ new myFunction{
   * 返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值。
   * 只返回对象自身的可遍历属性
   * 例子：
-    ```
+    ```js
     const obj = { foo: 'bar', baz: 42 };
     Object.values(obj)
     // ["bar", 42]
@@ -788,7 +788,7 @@ new myFunction{
 * Object.entries()
   * 方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组
   * 例子
-    ```
+    ```js
     const obj = { foo: 'bar', baz: 42 };
     Object.entries(obj)
     // [ ["foo", "bar"], ["baz", 42] ]
@@ -802,13 +802,13 @@ new myFunction{
 * Array.of()
   * 用于将一组值，转换为数组
   * 这个方法的主要目的，是弥补数组构造函数 Array()的不足。因为参数个数的不同，会导致 Array()的行为有差异。
-    ```
+    ```js
     Array() // []
     Array(3) // [, , ,]
     Array(3, 11, 8) // [3, 11, 8]
     ```
   * 例子：
-    ```
+    ```js
     Array.of(3, 11, 8) // [3,11,8]
     Array.of(3) // [3]
     Array.of(3).length // 1
@@ -817,7 +817,7 @@ new myFunction{
   * find 方法，用于找出第一个符合条件的数组成员。
   * 参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为 true 的成员，然后返回该成员。
   * 如果没有符合条件的成员，则返回 undefined。
-    ```
+    ```js
     [1, 5, 10, 15].find(function(value, index, arr) {
       return value > 9;
     }) // 10
@@ -825,12 +825,12 @@ new myFunction{
   * findIndex 方法的用法与 find 方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。
 * 数组实例的 fill()
   * 主要用于空数组的初始化非常方便
-    ```
+    ```js
     new Array(3).fill(7) // [7, 7, 7]
     ```
 * 数组实例的 includes()
   * 返回一个布尔值，表示某个数组是否包含给定的值，与字符串的 includes 方法类似。
-    ```
+    ```js
     [1, 2, 3].includes(2)     // true
     [1, 2, 3].includes(4)     // false
     [1, 2, NaN].includes(NaN) // true
@@ -842,14 +842,14 @@ new myFunction{
   * 用于将嵌套的数组“拉平”，变成一维的数组。
   * 返回一个新数组，对原数据没有影响。
   * 默认只会“拉平”一层
-    ```
+    ```js
     [1, 2, [3, [4, 5]]].flat()  // [1, 2, 3, [4, 5]]
     [1, 2, [3, [4, 5]]].flat(2)  // [1, 2, 3, 4, 5]
     [1, [2, [3]]].flat(Infinity) // [1, 2, 3]
     ```
   * flatMap()方法对原数组的每个成员执行一个函数（相当于执行 map()），然后对返回值组成的数组执行 flat()方法
   * flatMap()只能展开一层数组
-    ```
+    ```js
     // 相当于 [[2, 4], [3, 6], [4, 8]].flat()
     [2, 3, 4].flatMap((x) => [x, x * 2])
     // [2, 4, 3, 6, 4, 8]
@@ -883,7 +883,7 @@ new myFunction{
 
 * 例子
 
-  ```
+  ```js
   console.log('1');
 
   setTimeout(function() {
@@ -1096,13 +1096,17 @@ const deepClone = obj => {
 
 * render 执行的结果得到的不是真正的 DOM 节点，仅仅是轻量级的 JavaScript 对象, 我们称之为 virtual DOM.
 
-react 16.0之前和之后的Diff算法有很大不同，[老的Diff算法](https://zhuanlan.zhihu.com/p/20346379)比较复杂，16.0版本发布了`React Fiber`对Diff算法重新实现了，耗时2年多
+react 16.0之前和之后的Diff算法有很大不同，[老的Diff算法](https://zhuanlan.zhihu.com/p/20346379)比较复杂，16.0版本发布了`React Fiber`。Fiber 是对 React 核心算法的一次重新实现，将原本的同步更新过程碎片化，避免主线程的长时间阻塞，使应用的渲染更加流畅
 
-老的 Diff 算法提出了三个策略来保证整体界面构建的性能，具体是：
+在 React16 之前，更新组件时会调用各个组件的生命周期函数，计算和比对 Virtual DOM，更新 DOM 树等，这整个过程是同步进行的，中途无法中断。当组件比较庞大，更新操作耗时较长时，就会导致浏览器唯一的主线程都是执行组件更新操作，而无法响应用户的输入或动画的渲染，很影响用户体验。
 
-- Web UI 中 DOM 节点跨层级的移动操作特别少，可以忽略不计。
-- 拥有相同类的两个组件将会生成相似的树形结构，拥有不同类的两个组件将会生成不同的树形结构。
-- 对于同一层级的一组子节点，它们可以通过唯一 id 进行区分。
+Fiber 利用分片的思想，把一个耗时长的任务分成很多小片，每一个小片的运行时间很短，在每个小片执行完之后，就把控制权交还给 React 负责任务协调的模块，如果有紧急任务就去优先处理，如果没有就继续更新，这样就给其他任务一个执行的机会，唯一的线程就不会一直被独占。
+
+在React Fiber中，一次更新过程会分成多个分片完成，所以完全有可能一个更新任务还没有完成，就被另一个更高优先级的更新过程打断，这时候，优先级高的更新任务会优先处理完，而低优先级更新任务所做的工作则会完全作废，然后等待机会重头再来。
+
+因为一个更新过程可能被打断，所以React Fiber一个更新过程被分为两个阶段(Phase)：第一个阶段Reconciliation Phase和第二阶段Commit Phase。
+
+Fiber： 工作单元、维护每一个分片的数据结构、一种解决可中断的调用任务的一种解决方案
 
 React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍历，算法是建立在一个节点的插入、删除、移动等操作都是在节点树的同一层级中进行的。
 对于 Diff， 新老节点的对比，我们以新节点为标准，然后来构建整个 currentInWorkProgress，对于新的 children 会有四种情况。
@@ -1114,7 +1118,7 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 
 > * 参考：[Deep In React之浅谈 React Fiber 架构(一)](https://mp.weixin.qq.com/s/dONYc-Y96baiXBXpwh1w3A)
 > * 参考：[Deep In React 之详谈 React 16 Diff 策略(二)](https://juejin.im/post/6844903901590716429)
-> * 参考：[掘金——浅谈 React 中的 diff](https://juejin.im/post/5ac355576fb9a028cc616aad)
+> * 参考：[老的react diff：React 源码剖析系列 － 不可思议的 react diff](https://zhuanlan.zhihu.com/p/20346379)
 > * 参考：[segmentfault——React 的 diff 算法](https://segmentfault.com/a/1190000000606216)
 > * 参考：[React Fiber是什么](https://zhuanlan.zhihu.com/p/26027085)
 
@@ -1242,7 +1246,7 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 
   * 使用代理 - 请求同域下的 web 服务器; - web 服务器像代理一样去请求真正的第三方服务器; - 代理拿到数据过后, 直接返回给客户端 ajax.
   * jsonp: 即 JSON with padding。因为 script 标签是不会跨域的，利用这个特性，可以解决跨域，兼容性很好，但是只支持 GET 方式
-    ```
+    ```js
     //需要跨域的时候可以创建一个script标签
     var jsonp = document.createElement("script");
     //指定类型
@@ -1258,7 +1262,7 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
     ```
   * CORS：原理是使用自定义的 HTTP 头部，让服务器与浏览器进行沟通，主要是通过设置响应头的 Access-Control-Allow-Origin: \* 来达到目的
   * postMessage：postMessage(data,origin)
-    ```
+    ```js
     // 父页面发送消息
     window.frames[0].postMessage('message', origin)
     // 子页面监听自身的message事件来获取传过来的消息
