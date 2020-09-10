@@ -409,13 +409,15 @@ new myFunction{
     	setTimeout(function () {
     		console.log(i);
     	}, 1000);
-    } // 10 10 10 10 10 10 10 10 10 10
+    } 
+    // 10 10 10 10 10 10 10 10 10 10
 
     for (let i = 1; i < 10; i++) {
     	setTimeout(function () {
     		console.log(i);
     	}, 1000);
-    } // 1 2 3 4 5 6 7 8 9
+    } 
+    // 1 2 3 4 5 6 7 8 9
 
     for (var i = 1; i <= 10; i++) {
     	(function (j) {
@@ -423,7 +425,8 @@ new myFunction{
     			console.log(j);
     		}, 1000);
     	})(i);
-    }// 1 2 3 4 5 6 7 8 9
+    }
+    // 1 2 3 4 5 6 7 8 9
   ```
 
 > 参考：[掘金——闭包详解](https://juejin.im/post/5b081f8d6fb9a07a9b3664b6)  
