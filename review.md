@@ -60,9 +60,12 @@
     - [http 1.0、http 1.1 和 http 2.0 的区别](#http-10http-11-和-http-20-的区别)
     - [http 3.0](#http-30)
     - [跨域以及常见解决办法](#跨域以及常见解决办法)
+    - [XSS攻击](#xss攻击)
+    - [CSRF攻击](#csrf攻击)
 - [其他](#其他)
     - [对前端模块化的理解 todo](#对前端模块化的理解-todo)
     - [CI/CD todo](#cicd-todo)
+    - [重绘和回流（重绘和重排）](#重绘和回流重绘和重排)
 
 <!-- /TOC -->
 
@@ -1314,8 +1317,77 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
     > * 参考：[segmentfault——浅谈浏览器端 JavaScript 跨域解决方法](https://segmentfault.com/a/1190000004518374)
     > * 参考：[简书——浏览器中使用 js 跨域获取数据的几种方式](https://www.jianshu.com/p/c71c20e98f94)
 
+
+
+#### XSS攻击
+- 全称是 Cross Site Scripting(即跨站脚本) 为了和 CSS 区分，故叫它XSS
+- 攻击的实现有三种方式
+  - 存储型：常见的场景是留言评论区提交一段脚本代码，如果前后端没有做好转义的工作，那评论内容存到了数据库，在页面渲染过程中直接执行, 相当于执行一段未知逻辑的 JS 代码
+  - 反射型：如`http://sanyuan.com?q=<script>alert("你完蛋了")</script>`
+  - 文档型：WIFI路由器劫持或者本地恶意软件
+- 防范措施：千万不要相信任何用户的输入！
+  - 无论是在前端和服务端，都要对用户的输入进行转码或者过滤
+  - 利用 CSP：即浏览器中的内容安全策略，它的核心思想就是服务器决定浏览器加载哪些资源
+  - 利用 HttpOnly：很多 XSS 攻击脚本都是用来窃取Cookie, 而设置 Cookie 的 HttpOnly 属性后，JavaScript 便无法读取 Cookie 的值。这样也能很好的防范 XSS 攻击。
+
+#### CSRF攻击
+- CSRF(Cross-site request forgery), 即跨站请求伪造，指的是黑客诱导用户点击链接，打开黑客的网站，然后黑客利用用户目前的登录状态发起跨站请求。
+- 防范措施
+  - 利用Cookie的SameSite属性：SameSite可以设置为三个值，Strict、Lax和None
+  - 验证来源站点：需要要用到请求头中的两个字段: Origin和Referer。
+  - 校验token
+  
 ## 其他
 
 #### 对前端模块化的理解 todo
 
 #### CI/CD todo
+
+#### 重绘和回流（重绘和重排）
+- 回流也叫重排
+- 当对 DOM 结构的修改引发 DOM 几何尺寸变化的时候，会发生回流的过程
+  - 一个 DOM 元素的几何属性变化，常见的几何属性有width、height、padding、margin、left、top、border 等等
+  - 使 DOM 节点发生增减或者移动
+  - 读写 offset族、scroll族和client族属性的时候，浏览器为了获取这些值，需要进行回流操作
+  - 调用 window.getComputedStyle 方法
+- 当 DOM 的修改导致了样式的变化，并且没有影响几何属性的时候，会导致重绘(repaint)
+  - 例如改变元素背景色时
+  - visibility: hidden隐藏一个DOM节点-只触发重绘
+- 重绘不一定导致回流，但回流一定发生了重绘。
+- 如何减少重绘和回流
+  - 不要逐个变样式
+    ```js
+    // bad
+    var left = 10,
+        top = 10;
+    el.style.left = left + "px";
+    el.style.top  = top  + "px";
+    // better 
+    el.className += " theclassname";
+    // 当top和left的值是动态计算而成时...
+    // better
+    el.style.cssText += "; left: " + left + "px; top: " + top + "px;";
+
+    ```
+  - 不要频繁计算样式
+    ```js
+    // no-no!
+    for(big; loop; here) {
+        el.style.left = el.offsetLeft + 10 + "px";
+        el.style.top  = el.offsetTop  + 10 + "px";
+    }
+    // better
+    var left = el.offsetLeft,
+        top  = el.offsetTop
+        esty = el.style;
+    for(big; loop; here) {
+        left += 10;
+        top  += 10;
+        esty.left = left + "px";
+        esty.top  = top  + "px";
+    }
+    ```
+  - 对于 resize、scroll 等进行防抖/节流处理
+  - 使用[createDocumentFragment](https://www.jianshu.com/p/8ae83364c09c)
+> * 参考：[翻译计划-重绘重排重渲染](https://xdlrt.github.io/2016/11/05/2016-11-05/)
+> * 参考：[谈谈你对重绘和回流的理解](https://juejin.im/post/6844904021308735502#heading-54)
