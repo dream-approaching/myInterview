@@ -200,19 +200,17 @@ border-color: transparent transparent lightblue;
 > * 参考：这篇也可以 作为上面的补充：[CSDN——prototype、**proto**与 constructor](https://blog.csdn.net/cc18868876837/article/details/81211729)
 
 #### 实现继承的几种方式
-
-* 假设有父类 Parent
-
-  ```js
-  function Parent(name, age) {
-    this.name = name;
-    this.age = age;
-    this.colors = ["red","blue","yellow"];
-  }
-  Parent.prototype.showName = function() {
-    console.log(this.name);
-  }
-  ```
+```js
+// 假设有父类 Parent
+function Parent(name, age) {
+  this.name = name;
+  this.age = age;
+  this.colors = ["red","blue","yellow"];
+}
+Parent.prototype.showName = function() {
+  console.log(this.name);
+}
+```
 
 * 原型链继承
   ```js
