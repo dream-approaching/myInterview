@@ -212,6 +212,7 @@ Parent.prototype.showName = function() {
 }
 ```
 
+
 * 原型链继承
   ```js
   function Child() {
@@ -254,7 +255,7 @@ Parent.prototype.showName = function() {
   console.log(child2.colors) //["red", "blue", "yellow"]
   console.log(child1.showName()) // longzi
   ```
-* Object.create() (网上所谓的寄生组合式继承，太 tm 抽象了，听了名字就害怕)
+* Object.create() 
   ```js
   function Child(name, age){
       Parent.call(this, name, age); // 构造函数继承
