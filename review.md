@@ -3,7 +3,7 @@
 <!-- TOC -->
 
 - [html + css](#html--css)
-    - [css 盒模型 todo](#css-盒模型-todo)
+    - [css 盒模型](#css-盒模型)
     - [用 border 绘制三角形](#用-border-绘制三角形)
     - [BFC todo](#bfc-todo)
     - [垂直居中 todo](#垂直居中-todo)
@@ -52,11 +52,12 @@
     - [组件的复用](#组件的复用)
 - [RN todo](#rn-todo)
 - [浏览器](#浏览器)
-    - [session、cookie、localstorage、sessionStorage、IndexDB](#sessioncookielocalstoragesessionstorageindexdb)
+    - [浏览器缓存](#浏览器缓存)
+    - [浏览器的本地存储 session、cookie、localstorage、sessionStorage、IndexDB](#浏览器的本地存储-sessioncookielocalstoragesessionstorageindexdb)
     - [输入一个网址到页面展示，发生了什么事情](#输入一个网址到页面展示发生了什么事情)
     - [TCP 三次握手 四次挥手](#tcp-三次握手-四次挥手)
     - [常见状态码](#常见状态码)
-    - [http 请求头里都有什么内容 todo](#http-请求头里都有什么内容-todo)
+    - [http 请求头里都有什么内容](#http-请求头里都有什么内容)
     - [http 和 https 的区别](#http-和-https-的区别)
     - [http 1.0、http 1.1 和 http 2.0 的区别](#http-10http-11-和-http-20-的区别)
     - [http 3.0](#http-30)
@@ -64,7 +65,8 @@
     - [XSS攻击](#xss攻击)
     - [CSRF攻击](#csrf攻击)
 - [其他](#其他)
-    - [对前端模块化的理解 todo](#对前端模块化的理解-todo)
+    - [前端模块化](#前端模块化)
+      - [ES6 模块与 CommonJS 模块的差异](#es6-模块与-commonjs-模块的差异)
     - [CI/CD todo](#cicd-todo)
     - [重绘和回流（重绘和重排）](#重绘和回流重绘和重排)
 
@@ -72,7 +74,9 @@
 
 ## html + css
 
-#### css 盒模型 todo
+#### css 盒模型 
+- box-sizing: content-box（W3C盒模型，又名标准盒模型）：元素的宽高大小表现为内容的大小。
+- box-sizing: border-box（IE盒模型，又名怪异盒模型）：元素的宽高表现为内容 + 内边距 + 边框的大小。背景会延伸到边框的外沿。
 
 #### 用 border 绘制三角形
 
@@ -328,7 +332,7 @@ new myFunction{
 * typeof  
    typeof 一般用来判断 number, string, object, boolean, function, undefined, symbol
 * instanceof
-  * 主要的作用就是判断一个实例是否属于某种类型
+  * 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是否为 B 的实例
   * 也可以判断一个实例是否是其父类型或者祖先类型的实例
     ```js
     const person = function () {}
@@ -988,19 +992,19 @@ const deepClone = obj => {
 };
 
 // 易读
-const deepClone = obj => {
-  const clone = Object.assign({}, obj);
-  Object.keys(key => {
-    clone[key] = obj[key];
-    if (typeof obj[key] === 'object') {
-      clone[key] = deepClone(clone[key])
+function deepClone(obj) {
+  let clone = Object.assign({}, obj)
+  Object.keys(clone).forEach(item => {
+    if (typeof clone[item] === 'object') {
+      clone[item] = deepClone(clone[item])
     }
+    clone[item] = clone[item]
   })
   if (Array.isArray(obj)) {
-    clone.length = obj.length
+    clone.length = obj.length;
     return Array.from(clone)
   }
-  return clone;
+  return clone
 }
 ```
 
@@ -1188,8 +1192,38 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 ## RN todo
 
 ## 浏览器
+#### 浏览器缓存
+缓存是性能优化中非常重要的一环
 
-#### session、cookie、localstorage、sessionStorage、IndexDB
+浏览器中的缓存作用分为两种情况，一种是需要发送HTTP请求，一种是不需要发送。
+- 强缓存。首先是检查强缓存，这个阶段不需要发送HTTP请求。
+  - `HTTP/1.0`使用`Expires`检查强缓存，即过期时间，存在于服务端返回的响应头中，但服务器的时间和浏览器的时间可能并不一致。因此这种方式很快在后来的`HTTP1.1`版本中被抛弃了。
+  - `HTTP1.1`使用`Cache-Control`检查强缓存，采用过期时长来控制缓存，对应的字段是max-age。如`Cache-Control:max-age=3600`，代表这个响应返回后在 3600 秒，也就是一个小时之内可以直接使用缓存。
+- 协商缓存。强缓存失效之后，浏览器在请求头中携带相应的缓存tag来向服务器发请求，由服务器根据这个tag，来决定是否使用缓存，这就是协商缓存。缓存tag分为两种: `Last-Modified` 和 `ETag`。
+  - Last-Modified
+    - 即最后修改时间。在浏览器第一次给服务器发送请求后，服务器会在响应头中加上这个字段。
+    - 浏览器再次请求，会在请求头中携带If-Modified-Since字段
+    - 服务器拿到If-Modified-Since，跟服务器中时间做对比判断是否要更新
+  - ETag
+    - 是服务器根据当前文件的内容，给文件生成的唯一标识，只要里面的内容有改动，这个值就会变。服务器通过响应头把这个值给浏览器。
+    - 浏览器接收到ETag的值，会在下次请求时，将这个值作为If-None-Match这个字段的内容，并放到请求头中，然后发给服务器。
+    - 服务器接收到If-None-Match后，会跟服务器上该资源的ETag进行比对，判断是否要更新
+  - 对比
+    - 在精准度上，ETag优于Last-Modified
+    - 在性能上，Last-Modified优于ETag
+    - 如果两种方式都支持的话，服务器会优先考虑ETag
+- 缓存位置
+  - 当强缓存命中或者协商缓存中服务器返回304的时候，我们直接从缓存中获取资源。缓存位置一共有四种，按优先级从高到低排列分别是
+    - Service Worker：离线缓存就是 Service Worker Cache
+    - Memory Cache：是内存缓存，从效率上讲它是最快的。但是从存活时间来讲又是最短的，当渲染进程结束后，内存缓存也就不存在了。
+    - Disk Cache：是存储在磁盘中的缓存，从存取效率上讲是比内存缓存慢的，但是他的优势在于存储容量和存储时长。
+    - Push Cache：即推送缓存，这是浏览器缓存的最后一道防线。它是 HTTP/2 中的内容
+> 总结：首先通过 Cache-Control 验证强缓存是否可用，如果强缓存可用，直接使用，否则进入协商缓存，即发送 HTTP 请求，服务器通过请求头中的If-Modified-Since或者If-None-Match字段检查资源是否更新，若资源更新，返回资源和200状态码，否则，返回304，告诉浏览器直接从缓存获取资源。
+
+> 参考：[第1篇: 能不能说一说浏览器缓存?](https://juejin.im/post/6844904021308735502#heading-0)
+
+
+#### 浏览器的本地存储 session、cookie、localstorage、sessionStorage、IndexDB
 
 * cookie：保存在浏览器端， 大小 4K，可以设置过期时间
 * session：保存在服务器端，无大小限制
@@ -1238,7 +1272,17 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 * 5XX 服务器错误 - 500 internal sever error，表示服务器端在执行请求时发生了错误 - 503 service unavailable，服务不可用
   > * 记住上面这些面试应该够了，工作需要其他的直接去 google 吧~
 
-#### http 请求头里都有什么内容 todo
+#### http 请求头里都有什么内容
+![](https://raw.githubusercontent.com/dream-approaching/pictureMaps/master/img/20200912165539.png)
+- `Accept`	可接受的响应内容类型（Content-Types）。
+- `Accept-Encoding`	可接受的响应内容的编码方式。
+- `Accept-Language`	可接受的响应内容语言列表。
+- `Connection`	客户端（浏览器）想要优先使用的连接类型
+- `Cookie`	Cookie
+- `Host`	主机
+- `Origin`	表示访问控制所允许的来源
+- `Referer`	表示浏览器所访问的前一个页面，
+- `User-Agent`	浏览器的身份标识字符串
 
 #### http 和 https 的区别
 
@@ -1292,7 +1336,10 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 * 不同域之间 iframe, ajax 均受其限制, script 标签不受此限制.
 * 解决跨域的方式
 
-  * 使用代理 - 请求同域下的 web 服务器; - web 服务器像代理一样去请求真正的第三方服务器; - 代理拿到数据过后, 直接返回给客户端 ajax.
+  * 使用代理 
+    - 请求同域下的 web 服务器; 
+    - web 服务器像代理一样去请求真正的第三方服务器;
+    - 代理拿到数据过后, 直接返回给客户端 ajax.
   * jsonp: 即 JSON with padding。因为 script 标签是不会跨域的，利用这个特性，可以解决跨域，兼容性很好，但是只支持 GET 方式
     ```js
     //需要跨域的时候可以创建一个script标签
@@ -1348,7 +1395,36 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
   
 ## 其他
 
-#### 对前端模块化的理解 todo
+#### 前端模块化
+前端模块化就是把代码分成独立的模块有利于复用和维护。不过会有模块之间相互依赖的问题，所以有了commonJS 规范，AMD，CMD规范等等，以及用于js打包（编译等处理）的工具 ES6
+- Commonjs
+  - 主要用于服务端编程，加载模块是同步的，不适合在浏览器环境
+- AMD
+  - 主要在浏览器环境中异步加载模块，可以并行加载多个模块
+  - RequireJS 实现了AMD规范
+- CMD
+  - 与AMD规范相似，都用于浏览器编程，不同点在于：AMD 推崇依赖前置、提前执行，CMD推崇依赖就近、延迟执行
+  - seajs 实现了CMD规范
+- ES6 模块功能主要由两个命令构成：export和import
+##### ES6 模块与 CommonJS 模块的差异
+- CommonJS 模块是运行时加载，ES6 模块是编译时加载模块
+- CommonJS输出是值的拷贝；ES6 Modules输出的是值的引用
+  ```js
+  // CommonJS模块
+  let { stat, exists, readFile } = require('fs');
+
+  // 等同于
+  let _fs = require('fs');
+  let stat = _fs.stat;
+  let exists = _fs.exists;
+  let readfile = _fs.readfile;
+  ```
+  上面代码的实质是整体加载fs模块（即加载fs的所有方法），生成一个对象（_fs），然后再从这个对象上面读取 3 个方法。这种加载称为“运行时加载”，因为只有运行时才能得到这个对象，导致完全没办法在编译时做“静态优化”。
+  ```js
+  // ES6模块
+  import { stat, exists, readFile } from 'fs';
+  ```
+  上面代码的实质是从fs模块加载 3 个方法，其他方法不加载。这种加载称为“编译时加载”或者静态加载，即 ES6 可以在编译时就完成模块加载，效率要比 CommonJS 模块的加载方式高。当然，这也导致了没法引用 ES6 模块本身，因为它不是对象。
 
 #### CI/CD todo
 
