@@ -21,6 +21,7 @@
     - [闭包](#闭包)
     - [造成内存泄漏的常见情况](#造成内存泄漏的常见情况)
     - [ES6](#es6)
+        - [var 和 const let区别](#var-和-const-let区别)
         - [Promise](#promise)
         - [async await](#async-await)
         - [generator](#generator)
@@ -448,6 +449,15 @@ for(let v of a) {
 }
 ```
 #### ES6
+
+###### var 和 const let区别
+- 块级作用域
+- 不存在变量提升
+- 暂时性死区
+- 不可重复声明
+- let、const声明的全局变量不会挂在顶层对象下面
+- const 声明之后必须马上赋值，否则会报错
+- const 简单类型一旦声明就不能再更改，复杂类型(数组、对象等)指针指向的地址不能更改，内部数据可以更改
 
 ###### Promise
 
