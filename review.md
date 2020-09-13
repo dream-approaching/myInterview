@@ -1,78 +1,78 @@
 <!-- TOC -->
 
 - [html + css](#html--css)
-    - [用 border 绘制三角形](#用-border-绘制三角形)
-    - [css 盒模型](#css-盒模型)
-    - [css3动画样式](#css3动画样式)
-    - [css变量 / css自定义属性](#css变量--css自定义属性)
-    - [BFC](#bfc)
-    - [垂直居中](#垂直居中)
+  - [用 border 绘制三角形](#用-border-绘制三角形)
+  - [css 盒模型](#css-盒模型)
+  - [css3 动画样式](#css3-动画样式)
+  - [css 变量 / css 自定义属性](#css-变量--css-自定义属性)
+  - [BFC](#bfc)
+  - [垂直居中](#垂直居中)
 - [javascript](#javascript)
-    - [冒泡/捕获](#冒泡捕获)
-    - [跨浏览器的事件处理程序](#跨浏览器的事件处理程序)
-    - [事件委托](#事件委托)
-    - [原型链](#原型链)
-    - [实现继承的几种方式](#实现继承的几种方式)
-        - [优缺点对比：](#优缺点对比)
-    - [new 内部的原理](#new-内部的原理)
-    - [instanceof / typeof](#instanceof--typeof)
-    - [this、call、apply、bind](#thiscallapplybind)
-    - [作用域](#作用域)
-    - [闭包](#闭包)
-    - [造成内存泄漏的常见情况](#造成内存泄漏的常见情况)
-    - [ES6](#es6)
-        - [var 和 const let 区别](#var-和-const-let-区别)
-        - [Promise](#promise)
-        - [async await](#async-await)
-        - [generator](#generator)
-        - [Set / Map](#set--map)
-        - [Proxy](#proxy)
-        - [Symbol](#symbol)
-        - [Interator / for of](#interator--for-of)
-        - [Object 扩展](#object-扩展)
-        - [Array 扩展](#array-扩展)
-    - [Array](#array)
-    - [for in / for of](#for-in--for-of)
-    - [事件循环(EventLoop)](#事件循环eventloop)
-        - [宏任务，微任务](#宏任务微任务)
-    - [浅拷贝 深拷贝](#浅拷贝-深拷贝)
-    - [防抖、节流](#防抖节流)
-    - [柯里化](#柯里化)
-    - [常见设计模式](#常见设计模式)
+  - [冒泡/捕获](#冒泡捕获)
+  - [跨浏览器的事件处理程序](#跨浏览器的事件处理程序)
+  - [事件委托](#事件委托)
+  - [原型链](#原型链)
+  - [实现继承的几种方式](#实现继承的几种方式)
+    - [优缺点对比：](#优缺点对比)
+  - [new 内部的原理](#new-内部的原理)
+  - [instanceof / typeof](#instanceof--typeof)
+  - [this、call、apply、bind](#thiscallapplybind)
+  - [作用域](#作用域)
+  - [闭包](#闭包)
+  - [造成内存泄漏的常见情况](#造成内存泄漏的常见情况)
+  - [堆栈的区别](#堆栈的区别)
+  - [ES6](#es6)
+    - [var 和 const let 区别](#var-和-const-let-区别)
+    - [Promise](#promise)
+    - [async await](#async-await)
+    - [generator](#generator)
+    - [Set / Map](#set--map)
+    - [Proxy](#proxy)
+    - [Symbol](#symbol)
+    - [Interator / for of](#interator--for-of)
+    - [Object 扩展](#object-扩展)
+    - [Array 扩展](#array-扩展)
+  - [Array](#array)
+  - [for in / for of](#for-in--for-of)
+  - [事件循环(EventLoop)](#事件循环eventloop)
+    - [宏任务，微任务](#宏任务微任务)
+  - [浅拷贝 深拷贝](#浅拷贝-深拷贝)
+  - [防抖、节流](#防抖节流)
+  - [柯里化](#柯里化)
+  - [常见设计模式](#常见设计模式)
 - [React](#react)
-    - [生命周期](#生命周期)
-    - [组件之间怎么通信](#组件之间怎么通信)
-    - [react 中 key 的作用是什么](#react-中-key-的作用是什么)
-    - [diff 算法](#diff-算法)
-    - [function Component / class Component todo](#function-component--class-component-todo)
-    - [ref todo](#ref-todo)
-    - [react hooks todo](#react-hooks-todo)
-    - [redux](#redux)
-    - [组件的复用](#组件的复用)
-    - [react 和 vue 的区别](#react-和-vue-的区别)
+  - [生命周期](#生命周期)
+  - [组件之间怎么通信](#组件之间怎么通信)
+  - [react 中 key 的作用是什么](#react-中-key-的作用是什么)
+  - [diff 算法](#diff-算法)
+  - [function Component / class Component todo](#function-component--class-component-todo)
+  - [ref todo](#ref-todo)
+  - [react hooks todo](#react-hooks-todo)
+  - [redux](#redux)
+  - [组件的复用](#组件的复用)
+  - [react 和 vue 的区别](#react-和-vue-的区别)
 - [RN todo](#rn-todo)
 - [浏览器](#浏览器)
-    - [浏览器缓存](#浏览器缓存)
-    - [浏览器的本地存储 session、cookie、localstorage、sessionStorage、IndexDB](#浏览器的本地存储-sessioncookielocalstoragesessionstorageindexdb)
-    - [输入一个网址到页面展示，发生了什么事情](#输入一个网址到页面展示发生了什么事情)
-    - [TCP 三次握手 四次挥手](#tcp-三次握手-四次挥手)
-    - [常见状态码](#常见状态码)
-    - [http 请求头里都有什么内容](#http-请求头里都有什么内容)
-    - [http 和 https 的区别](#http-和-https-的区别)
-    - [http 1.0、http 1.1 和 http 2.0 的区别](#http-10http-11-和-http-20-的区别)
-    - [http 3.0](#http-30)
-    - [跨域以及常见解决办法](#跨域以及常见解决办法)
-    - [XSS 攻击](#xss-攻击)
-    - [CSRF 攻击](#csrf-攻击)
+  - [浏览器缓存](#浏览器缓存)
+  - [浏览器的本地存储 session、cookie、localstorage、sessionStorage、IndexDB](#浏览器的本地存储-sessioncookielocalstoragesessionstorageindexdb)
+  - [输入一个网址到页面展示，发生了什么事情](#输入一个网址到页面展示发生了什么事情)
+  - [TCP 三次握手 四次挥手](#tcp-三次握手-四次挥手)
+  - [常见状态码](#常见状态码)
+  - [http 请求头里都有什么内容](#http-请求头里都有什么内容)
+  - [http 和 https 的区别](#http-和-https-的区别)
+  - [http 1.0、http 1.1 和 http 2.0 的区别](#http-10http-11-和-http-20-的区别)
+  - [http 3.0](#http-30)
+  - [跨域以及常见解决办法](#跨域以及常见解决办法)
+  - [XSS 攻击](#xss-攻击)
+  - [CSRF 攻击](#csrf-攻击)
 - [其他](#其他)
-    - [前端模块化](#前端模块化)
-      - [ES6 模块与 CommonJS 模块的差异](#es6-模块与-commonjs-模块的差异)
-    - [重绘和回流（重绘和重排）](#重绘和回流重绘和重排)
+  - [前端模块化](#前端模块化)
+    - [ES6 模块与 CommonJS 模块的差异](#es6-模块与-commonjs-模块的差异)
+  - [重绘和回流（重绘和重排）](#重绘和回流重绘和重排)
 
 <!-- /TOC -->
 
 ## html + css
-
 
 #### 用 border 绘制三角形
 
@@ -90,18 +90,19 @@ border-color: transparent transparent lightblue;
 - box-sizing: content-box（W3C 盒模型，又名标准盒模型）：元素的宽高大小表现为内容的大小。
 - box-sizing: border-box（IE 盒模型，又名怪异盒模型）：元素的宽高表现为内容 + 内边距 + 边框的大小。背景会延伸到边框的外沿。
 
-> 若不声明DOCTYPE类型，IE浏览器会将盒子模型解释为IE盒子模型，FireFox等会将其解释为W3C盒子模型；若在页面中声明了DOCTYPE类型，所有的浏览器都会把盒模型解释为W3C盒模型。  
-> html5中写`<!DOCTYPE html>`
+> 若不声明 DOCTYPE 类型，IE 浏览器会将盒子模型解释为 IE 盒子模型，FireFox 等会将其解释为 W3C 盒子模型；若在页面中声明了 DOCTYPE 类型，所有的浏览器都会把盒模型解释为 W3C 盒模型。  
+> html5 中写`<!DOCTYPE html>`
 
-#### css3动画样式
+#### css3 动画样式
+
 - transform
   ```css
   transform: rotate(10deg); /* 旋转 */
   transform: skew(20deg); /* 倾斜 */
   transform: scale(1.5); /* 缩放 */
-  transform: translate(120px,0); /* 位移 */
+  transform: translate(120px, 0); /* 位移 */
   ```
-- transition：允许css的属性值在一定的时间区间内平滑地过渡,有如些4个参数
+- transition：允许 css 的属性值在一定的时间区间内平滑地过渡,有如些 4 个参数
   - `transition-property`：all / none / indent(属性名)
   - `transition-duration`：持续时间
   - `transition-timing-function`：缓动函数(linear、ease、ease-in、ease-out、ease-in-out)
@@ -109,42 +110,53 @@ border-color: transparent transparent lightblue;
 - animation
   ```css
   /* animation: 动画名称 时长必填 缓动函数 延时 执行次数 动画方向 */
-  div { animation: myfirst 5s linear 2s infinite alternate; } 
+  div {
+    animation: myfirst 5s linear 2s infinite alternate;
+  }
   /* 也可用from to 等同于 0% 100% */
   @keyframes myfirst {
-      0%   {background: red;}
-      25%  {background: yellow;}
-      50%  {background: blue;}
-      100% {background: green;}
+    0% {
+      background: red;
+    }
+    25% {
+      background: yellow;
+    }
+    50% {
+      background: blue;
+    }
+    100% {
+      background: green;
+    }
   }
   ```
 
-#### css变量 / css自定义属性
+#### css 变量 / css 自定义属性
+
 ```css
 /* 通过 -- 定义css属性  */
 .foo {
   color: red;
-  --theme-color: gray; 
+  --theme-color: gray;
 }
 
 /* 使用css属性 一个变量可用于多个地方 */
-.button { 
-  background-color: var(--theme-color); 
+.button {
+  background-color: var(--theme-color);
 }
-.title { 
-  color: var(--theme-color); 
+.title {
+  color: var(--theme-color);
 }
-.image-grid > .image { 
-  border-color: var(--theme-color); 
+.image-grid > .image {
+  border-color: var(--theme-color);
 }
 
 /* 加上默认值 */
-.button { 
-  background-color: var(--theme-color, gray); 
+.button {
+  background-color: var(--theme-color, gray);
 }
 /* 如果默认值也是css属性 */
 .button {
-   background-color: var(--theme-color, var(--fallback-color))
+  background-color: var(--theme-color, var(--fallback-color));
 }
 
 /* 可通过使用 :root 伪元素将css属性设置为全局变量，处处可用 */
@@ -152,22 +164,24 @@ border-color: transparent transparent lightblue;
   --theme-color: gray;
 }
 ```
+
 - 自定义元素的定义由 `--` 开头，这样浏览器能够区分自定义属性和原生属性
 - 使用时用`var()`
 - 可通过`:root`定义全局变量，局部想覆盖可重新定义
-- 可与calc进行计算`calc(var(--title-multiplier) * var(--base-size))`
-- 和js交互
+- 可与 calc 进行计算`calc(var(--title-multiplier) * var(--base-size))`
+- 和 js 交互
   - 可以通过 `getPropertyValue` 和 `setProperty` 方法操作
     ```js
-    const styles = getComputedStyle(document.querySelector('.foo'));
-    // Read value. Be sure to trim to remove whitespace. 
-    const oldColor = styles.getPropertyValue('--color').trim();
-    // Write value. 
-    foo.style.setProperty('--color', 'green');
+    const styles = getComputedStyle(document.querySelector(".foo"));
+    // Read value. Be sure to trim to remove whitespace.
+    const oldColor = styles.getPropertyValue("--color").trim();
+    // Write value.
+    foo.style.setProperty("--color", "green");
     ```
 
 #### BFC
-> 常见于margin发生折叠情况
+
+> 常见于 margin 发生折叠情况
 
 - BFC 即 Block Formatting Contexts (块级格式化上下文)
 - 只要元素满足下面任一条件即可触发 BFC 特性
@@ -181,14 +195,13 @@ border-color: transparent transparent lightblue;
   - BFC 可以包含浮动的元素（清除浮动）
   - BFC 可以阻止元素被浮动元素覆盖
 
-
-
 #### 垂直居中
-- line-height等于hieght
-- vertical-align: middle需要是inline-block
+
+- line-height 等于 hieght
+- vertical-align: middle 需要是 inline-block
 - 绝对定位 `top:50%` 配合 `margin-top: -height / 2` 或者 `transform:translateY(-50%);`(优点是不需要知道宽高)
-- 绝对定位 top、right、bottom、left都为0 配合 margin: auto;
-- flex布局
+- 绝对定位 top、right、bottom、left 都为 0 配合 margin: auto;
+- flex 布局
 
 ## javascript
 
@@ -548,6 +561,29 @@ for (let v of a) {
   console.log(v); // red green blue
 }
 ```
+
+#### 堆栈的区别
+
+- 栈(stack)
+  - 会自动分配内存空间，会自动释放。
+  - 存放简单的数据段，占据固定大小的空间。
+  - 属于后进先出
+    ```js
+    function multiply(x, y) {
+      return x * y;
+    }
+    function printSquare(x) {
+      var s = multiply(x, x);
+      console.log(s);
+    }
+    printSquare(5);
+    ```
+    ![](https://user-gold-cdn.xitu.io/2017/11/11/bc37a6231fca3b0aa3cd36369e866837?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+- 堆(heap)
+  - 动态分配的内存，大小不定也不会自动释放。
+  - 存放引用类型变量的指针
+
+> 参考：[[译] JavaScript 如何工作：对引擎、运行时、调用堆栈的概述](https://juejin.im/post/6844903510538993671)
 
 #### ES6
 
@@ -987,7 +1023,8 @@ for (let v of a) {
 
   > 参考 [掘金——数组迭代方法图解](https://juejin.im/post/5835808067f3560065ed4ab2)
 
-- reduce: 
+- reduce:
+
   - 语法 `arr.reduce(callback,[initialValue])`
     - callback （执行数组中每个值的函数，包含四个参数）
       - previousValue （上一次调用回调返回的值，或者是提供的初始值（initialValue））
@@ -996,35 +1033,37 @@ for (let v of a) {
       - array （调用 reduce 的数组）
     - initialValue （作为第一次调用 callback 的第一个参数。）
   - 举例
+
     ```js
     var arr = [
-      { id: 1, type: 'A', total: 3 }, 
-      { id: 2, type: 'B', total: 5 }, 
-      { id: 3, type: 'E', total: 7 },
-    ]
+      { id: 1, type: "A", total: 3 },
+      { id: 2, type: "B", total: 5 },
+      { id: 3, type: "E", total: 7 },
+    ];
     // 统计 total 的总和
     arr.reduce((sum, { total }) => {
       return sum + total;
-    }, 0) // 15
+    }, 0); // 15
 
     // 转换成对象
     arr.reduce((res, { id, type, total }) => {
       res[id] = { type, total };
       return res;
-    }, {}) 
+    }, {});
     // {1:{type: 'A', total: 3}, 2: { type: 'B', total: 5 },{ type: 'E', total: 7 }}
     ```
+
 - slice splice
   - slice
-    - 可操控Array及String
+    - 可操控 Array 及 String
     - 返回新数组，不该变原值
     - `arr.slice(begin)` / `arr.slice(begin, end)`
   - splice
-    - 可操控Array
-    - 从Array中添加/刪除项目，返回被刪除的项目。会改变原值
+    - 可操控 Array
+    - 从 Array 中添加/刪除项目，返回被刪除的项目。会改变原值
     - `array.splice(start, deleteCount, item1, item2, ...)`
       - start 增加/刪除項目的位置，負數代表從後方算起。
-      - deleteCount 刪除的個數，如為0則不會刪除。
+      - deleteCount 刪除的個數，如為 0 則不會刪除。
       - item… 添加的新項目。
 
 #### for in / for of
@@ -1093,7 +1132,6 @@ for (let v of a) {
   ```
 
   > 写的比较简略，详情请看参考:[掘金——这一次，彻底弄懂 JavaScript 执行机制](https://segmentfault.com/a/1190000018227028)
-
 
 #### 浅拷贝 深拷贝
 
@@ -1243,8 +1281,8 @@ function deepClone(obj) {
   > - 参考：[简书——深入详解函数的柯里化](https://www.jianshu.com/p/5e1899fe7d6b)
   > - 参考：[segmentfault——简述几个非常有用的柯里化函数使用场景](https://segmentfault.com/a/1190000015281061)
 
-
 #### 常见设计模式
+
 - 单例模式
   - 保证一个类仅有一个实例，并提供一个访问它的全局访问点。实现的方法为先判断实例存在与否，如果存在则直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。
   - 适用场景：一个单一对象，比如：弹窗，无论点击多少次，弹窗只应该被创建一次
@@ -1258,13 +1296,13 @@ function deepClone(obj) {
 - 中介者模式
   - 对象和对象之间借助第三方中介者进行通信
   - 例如飞机只需要和塔台通信就知道其他飞机的状态，不需要和所有飞机通信
-  - 适用场景：商城购买，多种场景都会触发onchange
+  - 适用场景：商城购买，多种场景都会触发 onchange
 - 装饰者模式
   - 在不改变对象自身的基础上，在程序运行期间给对象动态地添加方法。
   - 举例：redux connect 与 Hoc
 
 > 参考：[JavaScript 中常见设计模式整理](https://juejin.im/post/6844903607452581896)
-> 参考：[JavaScript设计模式](https://juejin.im/post/6844903503266054157)
+> 参考：[JavaScript 设计模式](https://juejin.im/post/6844903503266054157)
 
 ## React
 
@@ -1336,16 +1374,16 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 
 #### function Component / class Component todo
 
-
 #### ref todo
 
 #### react hooks todo
 
 #### redux
-- 将整个应用的state储存在唯一的store对象中。
-- state只能通过触发action来修改，其中action就是一个描述性的普通对象。
-- 使用reducer来描述action如何改变state。
-  
+
+- 将整个应用的 state 储存在唯一的 store 对象中。
+- state 只能通过触发 action 来修改，其中 action 就是一个描述性的普通对象。
+- 使用 reducer 来描述 action 如何改变 state。
+
 > 参考：[Redux 入门教程，应用的状态管理器](https://www.jianshu.com/p/d296a8c34936)
 
 #### 组件的复用
@@ -1495,7 +1533,7 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
   - 报头压缩
   - 服务器推送：允许服务器未经请求，主动向客户端发送资源
 - 总结
-  |    http1.0     |                                   http1.1                                    |                               http2.0                                |
+  | http1.0 | http1.1 | http2.0 |
   | :------------: | :--------------------------------------------------------------------------: | :------------------------------------------------------------------: |
   | 无状态、无连接 | 持久连接<br/>请求管道化<br/>加缓存处理<br/>增加 Host 字段<br/>支持断点传输等 | 二进制分帧 <br/> 多路复用（或连接共享）<br/> 头部压缩<br/>服务器推送 |
   > - 参考：[HTTP1.0 HTTP1.1 HTTP2.0 主要特性对比/2](https://segmentfault.com/a/1190000013028798)
