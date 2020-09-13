@@ -17,10 +17,10 @@
   - [6.addEventListener 函数的第三个参数](#6addeventlistener-函数的第三个参数)
   - [7.所有的事件都有冒泡吗？](#7所有的事件都有冒泡吗)
   - [8.typeof 和 instanceof 的区别](#8typeof-和-instanceof-的区别)
-  - [9.webpack 中如何处理图片的](#9webpack-中如何处理图片的)
-  - [10.在移动端中怎样初始化根元素的字体大小](#10在移动端中怎样初始化根元素的字体大小)
-  - [11.移动端布局](#11移动端布局)
-  - [12.知道 meta 标签有把 http 换成 https 的功能吗](#12知道-meta-标签有把-http-换成-https-的功能吗)
+  - [9.在移动端中怎样初始化根元素的字体大小](#9在移动端中怎样初始化根元素的字体大小)
+  - [10.移动端布局](#10移动端布局)
+  - [11.知道 meta 标签有把 http 换成 https 的功能吗](#11知道-meta-标签有把-http-换成-https-的功能吗)
+  - [12.性能优化](#12性能优化)
   - [13.webpack](#13webpack)
     - [13.1 webpack 和 gulp 区别](#131-webpack-和-gulp-区别)
     - [13.2 webpack 怎么打包多页面](#132-webpack-怎么打包多页面)
@@ -31,9 +31,9 @@
     - [13.7 如何优化 Webpack 的构建速度？](#137-如何优化-webpack-的构建速度)
     - [13.8 什么是 Tree shaking？如何开启](#138-什么是-tree-shaking如何开启)
     - [13.9 如何实现代码分割](#139-如何实现代码分割)
-  - [14.性能优化](#14性能优化)
-  - [15 slice、substr 和 substring 有什么区别](#15-slicesubstr-和-substring-有什么区别)
-  - [16.react-redux connect 的原理是什么](#16react-redux-connect-的原理是什么)
+    - [13.10 webpack 中如何处理图片的](#1310-webpack-中如何处理图片的)
+  - [14 slice、substr 和 substring 有什么区别](#14-slicesubstr-和-substring-有什么区别)
+  - [15.react-redux connect 的原理是什么](#15react-redux-connect-的原理是什么)
 
 <!-- /TOC -->
 
@@ -275,14 +275,7 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 - 基本类型： string, number, boolean, undefined, null, Symbol, bigInt(es10 新增)
 - 引用类型： function, array, object
 
-### 9.webpack 中如何处理图片的
-
-在 webpack 中有两种处理图片的 loader：
-
-file-loader：解决 CSS 等中引入图片的路径问题；(解决通过 url,import/require()等引入图片的问题)
-url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片进行 base64 编码(当项目中有很多图片，通过 url-loader 进行 base64 编码后会减少 http 请求数量，提高性能)，大于 limit 参数值，则使用 file-loader 拷贝图片并输出到编译目录中；
-
-### 10.在移动端中怎样初始化根元素的字体大小
+### 9.在移动端中怎样初始化根元素的字体大小
 
 - 动态计算 font-size
   ```js
@@ -298,21 +291,26 @@ url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片�
 - 还需要配合一个 meta 头
   `<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-sacle=1.0, maximum-scale=1.0, user-scalable=no" />`
 
-我一般的解决方案是结合两个库
-
-### 11.移动端布局
+### 10.移动端布局
 
 - 移动端布局的方式主要使用 rem 和 flex，可以结合 rem 和媒体查询，然后不同的上视口大小下设置设置 html 的 font-size。
 - 可单独制作移动端页面也可响应式 pc 端移动端共用一个页面。没有好坏，视情况而定，因势利导
 - 我一般是结合两个库`postcss-pxtorem`和`lib-flexible`，前者用于转换单位，后者用于修改根节点字体大小
 
-### 12.知道 meta 标签有把 http 换成 https 的功能吗
+### 11.知道 meta 标签有把 http 换成 https 的功能吗
 
 利用 meta 标签把 http 请求换为 https
 
 ```html
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 ```
+
+### 12.性能优化
+
+- 降低请求量：合并资源，减少 HTTP 请求数，minify / gzip 压缩，webP，图片 lazyLoad。
+- 加快请求速度：预解析 DNS，减少域名数，并行加载，CDN 分发。
+- 缓存：HTTP 协议缓存请求，离线数据缓存 localStorage。
+- 渲染：JS/CSS 优化（避免使用 CSS 表达式），加载顺序（将 CSS 样式表放在顶部，把 javascript 放在底部），服务端渲染，pipeline。
 
 ### 13.webpack
 
@@ -389,14 +387,14 @@ url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片�
 - 抽取公有代码：使用 SplitChunks 抽取公有代码；
 - 动态加载 ：动态加载一些代码。
 
-### 14.性能优化
+#### 13.10 webpack 中如何处理图片的
 
-- 降低请求量：合并资源，减少 HTTP 请求数，minify / gzip 压缩，webP，图片 lazyLoad。
-- 加快请求速度：预解析 DNS，减少域名数，并行加载，CDN 分发。
-- 缓存：HTTP 协议缓存请求，离线数据缓存 localStorage。
-- 渲染：JS/CSS 优化（避免使用 CSS 表达式），加载顺序（将 CSS 样式表放在顶部，把 javascript 放在底部），服务端渲染，pipeline。
+在 webpack 中有两种处理图片的 loader：
 
-### 15 slice、substr 和 substring 有什么区别
+file-loader：解决 CSS 等中引入图片的路径问题；(解决通过 url,import/require()等引入图片的问题)
+url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片进行 base64 编码(当项目中有很多图片，通过 url-loader 进行 base64 编码后会减少 http 请求数量，提高性能)，大于 limit 参数值，则使用 file-loader 拷贝图片并输出到编译目录中；
+
+### 14 slice、substr 和 substring 有什么区别
 
 `var test = 'hello world';`
 
@@ -409,7 +407,7 @@ test.substring(2, 5) === test.substring(5, 2); // "llo"
 test.slice(2, 5); // "llo"
 ```
 
-### 16.react-redux connect 的原理是什么
+### 15.react-redux connect 的原理是什么
 
 - `connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])`
 - connect 的作用是连接 React 组件与 Redux store
