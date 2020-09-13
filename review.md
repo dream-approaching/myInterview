@@ -1474,9 +1474,14 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
   - 客户端发送 SYN 报文
   - 服务端发送 SYN+ACK 报文
   - 客户端再发送 ACK 确认包
-- 四次挥手 - 主动方发送 FIN 报文 - 接收方收到 FIN，发回一个 ACK 确认 - 接收方也发送一个 FIN - 主动方收到后发回 ACK 确认
-  > - 参考：动画讲解：[掘金——三次握手 四次挥手](https://juejin.im/post/5b29d2c4e51d4558b80b1d8c)
-  > - 参考：[博客园——为什么不是 2 次握手或者其他次](https://www.cnblogs.com/zhuzhenwei918/p/7465467.html)
+- 四次挥手
+  - 主动方发送 FIN 报文
+  - 接收方收到 FIN，发回一个 ACK 确认
+  - 接收方也发送一个 FIN
+  - 主动方收到后发回 ACK 确认
+
+> - 参考：动画讲解：[掘金——三次握手 四次挥手](https://juejin.im/post/5b29d2c4e51d4558b80b1d8c)
+> - 参考：[博客园——为什么不是 2 次握手或者其他次](https://www.cnblogs.com/zhuzhenwei918/p/7465467.html)
 
 #### 常见状态码
 
@@ -1493,8 +1498,11 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
   - 401 unauthorized，需要身份验证
   - 403 forbidden，表示对请求资源的访问被服务器拒绝
   - 404 not found，表示在服务器上没有找到请求的资源
-- 5XX 服务器错误 - 500 internal sever error，表示服务器端在执行请求时发生了错误 - 503 service unavailable，服务不可用
-  > - 记住上面这些面试应该够了，工作需要其他的直接去 google 吧~
+- 5XX 服务器错误
+  - 500 internal sever error，表示服务器端在执行请求时发生了错误
+  - 503 service unavailable，服务不可用
+
+> - 记住上面这些面试应该够了，工作需要其他的直接去 google 吧~
 
 #### http 请求头里都有什么内容
 
