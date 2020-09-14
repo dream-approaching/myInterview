@@ -24,16 +24,19 @@
   - [13.webpack](#13webpack)
     - [13.1 webpack 和 gulp 区别](#131-webpack-和-gulp-区别)
     - [13.2 webpack 怎么打包多页面](#132-webpack-怎么打包多页面)
-    - [13.3 有哪些常见的Loader？你用过哪些Loader？](#133-有哪些常见的loader你用过哪些loader)
-    - [13.4 有哪些常见的Plugin？你用过哪些Plugin？](#134-有哪些常见的plugin你用过哪些plugin)
-    - [13.5 说一说Loader和Plugin的区别?](#135-说一说loader和plugin的区别)
-    - [13.6 Webpack构建流程简单说一下](#136-webpack构建流程简单说一下)
+    - [13.3 有哪些常见的 Loader？你用过哪些 Loader？](#133-有哪些常见的-loader你用过哪些-loader)
+    - [13.4 有哪些常见的 Plugin？你用过哪些 Plugin？](#134-有哪些常见的-plugin你用过哪些-plugin)
+    - [13.5 说一说 Loader 和 Plugin 的区别?](#135-说一说-loader-和-plugin-的区别)
+    - [13.6 Webpack 构建流程简单说一下](#136-webpack-构建流程简单说一下)
     - [13.7 如何优化 Webpack 的构建速度？](#137-如何优化-webpack-的构建速度)
-    - [13.8 什么是Tree shaking？如何开启](#138-什么是tree-shaking如何开启)
+    - [13.8 什么是 Tree shaking？如何开启](#138-什么是-tree-shaking如何开启)
     - [13.9 如何实现代码分割](#139-如何实现代码分割)
   - [14.性能优化](#14性能优化)
-  - [15 slice、substr 和 substring 有什么区别](#15-slicesubstr-和-substring-有什么区别)
-  - [16.react-redux connect 的原理是什么](#16react-redux-connect-的原理是什么)
+  - [15. slice、substr 和 substring 有什么区别](#15-slicesubstr-和-substring-有什么区别)
+  - [16. react-redux connect 的原理是什么](#16-react-redux-connect-的原理是什么)
+  - [17.HTML5 有哪些新特性](#17html5-有哪些新特性)
+  - [18. CSS3 有哪些新特性](#18-css3-有哪些新特性)
+  - [19. ES6 有哪些新特性](#19-es6-有哪些新特性)
 
 <!-- /TOC -->
 
@@ -67,8 +70,8 @@ a:visited {
 
 ```js
 function showName() {
-  const firstName = "zheng";
-  return function() {
+  const firstName = 'zheng';
+  return function () {
     console.log(`${firstName} longzi`);
   };
 }
@@ -81,7 +84,7 @@ fn(); // zheng longzi
 ```js
 function curry(fn, args1 = []) {
   const { length } = fn;
-  return function(...args2) {
+  return function (...args2) {
     const args = [...args1, ...args2];
     if (args.length < length) {
       return curry.call(this, fn, args);
@@ -96,7 +99,7 @@ function curry(fn, args1 = []) {
 ```js
 function debounce(fn, ms) {
   let timer;
-  return function(...args) {
+  return function (...args) {
     clearTimeout(timer);
     timer = setTimeout(() => {
       fn.apply(this, args);
@@ -136,7 +139,7 @@ function throttle = (fn, ms) => {
 function deepClone(obj) {
   let clone = Object.assign({}, obj);
   Object.keys(clone).forEach((item) => {
-    if (typeof clone[item] === "object") {
+    if (typeof clone[item] === 'object') {
       clone[item] = deepClone(clone[item]);
     }
     clone[item] = clone[item];
@@ -195,18 +198,18 @@ xhr.send(null)
 ### 3.点击一个 input 依次触发的事件
 
 ```js
-const text = document.getElementById("text");
-text.onclick = function(e) {
-  console.log("onclick");
+const text = document.getElementById('text');
+text.onclick = function (e) {
+  console.log('onclick');
 };
-text.onfocus = function(e) {
-  console.log("onfocus");
+text.onfocus = function (e) {
+  console.log('onfocus');
 };
-text.onmousedown = function(e) {
-  console.log("onmousedown");
+text.onmousedown = function (e) {
+  console.log('onmousedown');
 };
-text.onmouseenter = function(e) {
-  console.log("onmouseenter");
+text.onmouseenter = function (e) {
+  console.log('onmouseenter');
 };
 
 // 'nmouseenter => onmousedown => onfocus => onclick
@@ -286,12 +289,12 @@ url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片�
 
 - 动态计算 font-size
   ```js
-  (function() {
+  (function () {
     var html = document.documentElement;
     function onWindowResize() {
-      html.style.fontSize = html.getBoundingClientRect().width / 20 + "px";
+      html.style.fontSize = html.getBoundingClientRect().width / 20 + 'px';
     }
-    window.addEventListener("resize", onWindowResize);
+    window.addEventListener('resize', onWindowResize);
     onWindowResize();
   })();
   ```
@@ -328,7 +331,8 @@ url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片�
 - entry 中添加每个页面对应的入口文件
 - html-webpack-plugin 添加每个页面对应的 html 模板
 
-#### 13.3 有哪些常见的Loader？你用过哪些Loader？
+#### 13.3 有哪些常见的 Loader？你用过哪些 Loader？
+
 - `file-loader`：把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件 (处理图片和字体)
 - `url-loader`：与 file-loader 类似，区别是用户可以设置一个阈值，大于阈值会交给 file-loader 处理，小于阈值时返回文件 base64 形式编码 (处理图片和字体)
 - `image-loader`：加载并且压缩图片文件
@@ -340,7 +344,8 @@ url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片�
 
 > 说几个就好
 
-#### 13.4 有哪些常见的Plugin？你用过哪些Plugin？
+#### 13.4 有哪些常见的 Plugin？你用过哪些 Plugin？
+
 - `define-plugin`：定义环境变量 (Webpack4 之后指定 mode 会自动配置)
 - `html-webpack-plugin`：简化 HTML 文件创建 (依赖于 html-loader)
 - `uglifyjs-webpack-plugin`：不支持 ES6 压缩 (Webpack4 以前)
@@ -348,7 +353,8 @@ url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片�
 - `clean-webpack-plugin`: 目录清理
 - `webpack-bundle-analyzer`: 可视化 Webpack 输出文件的体积 (业务组件、依赖第三方模块)
 
-#### 13.5 说一说Loader和Plugin的区别?
+#### 13.5 说一说 Loader 和 Plugin 的区别?
+
 - Loader
   - 本质是一个函数，在该函数中对接收到的内容进行转换
   - 在 module.rules 中配置
@@ -357,12 +363,14 @@ url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片�
   - 在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。
   - 在 plugins 中单独配置
 
-#### 13.6 Webpack构建流程简单说一下
+#### 13.6 Webpack 构建流程简单说一下
+
 - 初始化参数
 - 开始编译 => 确定入口 => 编译模块 => 完成模块编译
 - 输出资源 => 输出完成
 
 #### 13.7 如何优化 Webpack 的构建速度？
+
 - 使用高版本的 Webpack 和 Node.js
 - 多进程/多实例构建
 - 压缩代码
@@ -371,12 +379,15 @@ url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片�
 - 提取页面公共资源
 - Tree shaking
 
-#### 13.8 什么是Tree shaking？如何开启
-- Tree-shaking是指在打包中取出那些引入了但在代码中没有被用到的死代码。
-- webpack中通过uglifysPlugin来Tree-shaking JS。
+#### 13.8 什么是 Tree shaking？如何开启
+
+- Tree-shaking 是指在打包中取出那些引入了但在代码中没有被用到的死代码。
+- webpack 中通过 uglifysPlugin 来 Tree-shaking JS。
 
 #### 13.9 如何实现代码分割
+
 有三种方式
+
 - 入口配置：entry 入口使用多个入口文件；
 - 抽取公有代码：使用 SplitChunks 抽取公有代码；
 - 动态加载 ：动态加载一些代码。
@@ -388,8 +399,7 @@ url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片�
 - 缓存：HTTP 协议缓存请求，离线数据缓存 localStorage。
 - 渲染：JS/CSS 优化（避免使用 CSS 表达式），加载顺序（将 CSS 样式表放在顶部，把 javascript 放在底部），服务端渲染，pipeline。
 
-
-### 15 slice、substr 和 substring 有什么区别
+### 15. slice、substr 和 substring 有什么区别
 
 `var test = 'hello world';`
 
@@ -402,14 +412,108 @@ test.substring(2, 5) === test.substring(5, 2); // "llo"
 test.slice(2, 5); // "llo"
 ```
 
-### 16.react-redux connect 的原理是什么
+### 16. react-redux connect 的原理是什么
+
 - `connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])`
-- connect的作用是连接React组件与 Redux store
-- connect之所以会成功，是因为Provider组件
-  - 在原应用组件上包裹一层，使原来整个应用成为Provider的子组件
-  - 接收Redux的store作为props，通过context对象传递给子孙组件上的connect
- 
+- connect 的作用是连接 React 组件与 Redux store
+- connect 之所以会成功，是因为 Provider 组件
+  - 在原应用组件上包裹一层，使原来整个应用成为 Provider 的子组件
+  - 接收 Redux 的 store 作为 props，通过 context 对象传递给子孙组件上的 connect
+
 > 有点答非所问，随便瞎扯一点吧，总比呆呆的说不会好
 
-> 参考：[再来一打Webpack面试题](https://juejin.im/post/6844904094281236487)
+### 17.HTML5 有哪些新特性
+
+- 新增标签
+  - 结构化标签: article, aside, header, footer, figure, section, nav, main, mark
+  - 多媒体标签:audio(embed), video(source)
+  - 新图形标签:svg, canvas
+- 废除的元素
+  - basefont、big、center、font、s、strike、tt、u 用 css 代替
+  - applet、bgsound、blink、marquee
+  - frame、noframes,在 html5 中不支持 frame 框架，只支持 iframe 框架
+- 新增的 API
+  - Geolocation 地理位置
+  - Drag & Drop 拖放
+  - Local Storage 本地存储
+  - Application Cache 应用程序缓存
+- DOCTYPE 声明：`<!Doctype html>`
+- 新增的 input 类型和属性
+  | 类型 type | 属性 attribute |
+  | --------------------- | ------------------------ |
+  | color | autocomplete 、autofocus |
+  | datetime 、time、date | list |
+  | email 、tel 、url | placeholder |
+  | month 、week | required |
+  | number | pattern(regexp) |
+  | range | height and width |
+  | search | min and max |
+
+### 18. CSS3 有哪些新特性
+
+- 新增很多选择器
+  - :root: 选择文档的根元素
+  - E:empty: 选择没有子元素的每个 E 元素（包括文本节点)。
+- 动画
+  - Transition
+  - Transform
+  - Animation
+- 渐变
+  - linear-gradient(线性渐变)
+  - radial-gradient(径向渐变)
+- border
+  - border-radius
+  - box-shadow
+  - border-image
+- 背景
+  - background-clip
+  - background-origin
+  - background-size
+  - background-break
+- 文字效果
+  - word-wrap
+  - text-overflow
+  - text-shadow
+- @font-face 特性
+- flex 布局
+
+### 19. ES6 有哪些新特性
+
+- const let
+- 解构赋值（数组，对象，字符串）
+- 字符串扩展
+  - 模板字符串
+  - includes()：返回布尔值，表示是否找到了参数字符串
+  - startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部。
+  - endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部。
+  - repeat()：方法返回一个新字符串，表示将原字符串重复 n 次。
+- 数值的扩展
+  - Number.isFinite(), Number.isNaN() // 它们与传统的全局方法 isFinite()和 isNaN()的区别在于，传统方法先调用 Number()将非数值的值转为数值，再进行判断，而这两个新方法只对数值有效
+  - Number.parseInt(), Number.parseFloat()
+  - Number.isInteger(): 判断一个数值是否为整数。
+- 函数的扩展
+  - 参数设置默认值
+  - rest 参数
+  - 箭头函数
+- 数组的扩展
+  - 扩展运算符 ...
+  - Array.from: 用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象
+  - find() 和 findIndex()
+  - fill()
+  - includes()
+  - flat()，flatMap()
+- 对象的扩展
+  - 扩展运算符 ...
+  - 属性的简洁表示法
+  - Object.assign()方法用于对象的合并，Object.assign()方法实行的是浅拷贝，而不是深拷贝
+  - Object.keys()，Object.values()，Object.entries()
+- Set
+- Map
+- Promise
+- Generator
+- async
+- class 继承
+- module 语法
+
+> 参考：[再来一打 Webpack 面试题](https://juejin.im/post/6844904094281236487)
 > 参考：[霖呆呆的近期面试 128 题汇总(含超详细答案)](https://juejin.im/post/6844904151369908232)
