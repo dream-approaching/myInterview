@@ -21,6 +21,7 @@
   - [10.移动端布局](#10移动端布局)
   - [11.知道 meta 标签有把 http 换成 https 的功能吗](#11知道-meta-标签有把-http-换成-https-的功能吗)
   - [12.性能优化](#12性能优化)
+    - [12.1 React 中怎么优化性能](#121-react-中怎么优化性能)
   - [13.webpack](#13webpack)
     - [13.1 webpack 和 gulp 区别](#131-webpack-和-gulp-区别)
     - [13.2 webpack 怎么打包多页面](#132-webpack-怎么打包多页面)
@@ -70,8 +71,8 @@ a:visited {
 
 ```js
 function showName() {
-  const firstName = 'zheng';
-  return function () {
+  const firstName = "zheng";
+  return function() {
     console.log(`${firstName} longzi`);
   };
 }
@@ -84,7 +85,7 @@ fn(); // zheng longzi
 ```js
 function curry(fn, args1 = []) {
   const { length } = fn;
-  return function (...args2) {
+  return function(...args2) {
     const args = [...args1, ...args2];
     if (args.length < length) {
       return curry.call(this, fn, args);
@@ -99,7 +100,7 @@ function curry(fn, args1 = []) {
 ```js
 function debounce(fn, ms) {
   let timer;
-  return function (...args) {
+  return function(...args) {
     clearTimeout(timer);
     timer = setTimeout(() => {
       fn.apply(this, args);
@@ -139,7 +140,7 @@ function throttle = (fn, ms) => {
 function deepClone(obj) {
   let clone = Object.assign({}, obj);
   Object.keys(clone).forEach((item) => {
-    if (typeof clone[item] === 'object') {
+    if (typeof clone[item] === "object") {
       clone[item] = deepClone(clone[item]);
     }
     clone[item] = clone[item];
@@ -198,18 +199,18 @@ xhr.send(null)
 ### 3.点击一个 input 依次触发的事件
 
 ```js
-const text = document.getElementById('text');
-text.onclick = function (e) {
-  console.log('onclick');
+const text = document.getElementById("text");
+text.onclick = function(e) {
+  console.log("onclick");
 };
-text.onfocus = function (e) {
-  console.log('onfocus');
+text.onfocus = function(e) {
+  console.log("onfocus");
 };
-text.onmousedown = function (e) {
-  console.log('onmousedown');
+text.onmousedown = function(e) {
+  console.log("onmousedown");
 };
-text.onmouseenter = function (e) {
-  console.log('onmouseenter');
+text.onmouseenter = function(e) {
+  console.log("onmouseenter");
 };
 
 // 'nmouseenter => onmousedown => onfocus => onclick
@@ -282,12 +283,12 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 
 - 动态计算 font-size
   ```js
-  (function () {
+  (function() {
     var html = document.documentElement;
     function onWindowResize() {
-      html.style.fontSize = html.getBoundingClientRect().width / 20 + 'px';
+      html.style.fontSize = html.getBoundingClientRect().width / 20 + "px";
     }
-    window.addEventListener('resize', onWindowResize);
+    window.addEventListener("resize", onWindowResize);
     onWindowResize();
   })();
   ```
@@ -314,6 +315,24 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 - 加快请求速度：预解析 DNS，减少域名数，并行加载，CDN 分发。
 - 缓存：HTTP 协议缓存请求，离线数据缓存 localStorage。
 - 渲染：JS/CSS 优化（避免使用 CSS 表达式），加载顺序（将 CSS 样式表放在顶部，把 javascript 放在底部），服务端渲染，pipeline。
+
+#### 12.1 React 中怎么优化性能
+
+主要是指代码层面上
+
+- 使用纯组件
+- 函数组件可以使用 React.memo
+- shouldComponentUpdate
+- 懒加载组件：用 Suspense 和 lazy
+- 使用 React Fragments
+- 组件的复用：高阶组件，render props
+- 避免使用内联函数
+- 避免使用内联样式
+- 不要在 render 中改变数据
+- 加唯一 key 值
+- 高频事件节流和防抖
+- 用 CSS 动画代替 JavaScript 动画
+- React 组件的服务端渲染
 
 ### 13.webpack
 
