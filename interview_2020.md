@@ -39,6 +39,51 @@
 
 > 其他：周末双休，加班较少，无调休
 
+#### 2、某安科技
+
+> - redux
+>   - react 中 redux 的数据流是怎么走的
+>   - 为什么要用 dispatch 一个 action 去触发 reducer 的 state，调用 dispatch action 的话主要做了什么事情才能让 reducer 的 state 进行更新
+>   - store 是用来干嘛的
+>   - 有没有尝试去自己写一个 redux 中间件
+>   - 用过哪些 redux 中间件
+>   - 说下 thunk，saga 中间件的区别
+>   - take,put,call,takeEvery 都来自于哪个函数
+>   - take,takeEvery,takeAll 的区别是什么
+>   - saga 的缺点是什么
+>   - 你觉得什么业务场景下用 saga 会非常合适
+> - umi + dva
+>   - umi 主要包含哪些东西
+>   - umi 对包含的几个东西做了哪些处理，跟我自己搭建框架有什么区别
+> - webpack
+>   - 项目比较大的情况，怎么对 webpack 做编译的优化
+>   - 用过 webpack 哪些插件
+>   - file-loader 和 url-loader 有什么区别
+> - react
+>   - 用过哪些版本的 react
+>   - constructor 里的 super(props)什么作用
+>   - this.props.写法在 IE10 下会有什么问题
+>   - 为什么要用 hooks
+>   - 常用的 hooks 钩子都有哪些
+>   - useEffects 的作用
+>   - useState 的第一个和第二个返回值是什么
+>   - react-router 中的 Link 和 a 有什么区别
+>   - react 渲染的机制是什么样的
+>   - 跨组件传递信息的几种方式
+>   - 为什么 react 官方不建议使用 context
+>   - 说一下 context 是怎么实现跨组件传递信息的
+>   - 如果有一个现成的 vue 组件，怎么改成 react 形式的
+> - js
+>   - 深拷贝和浅拷贝的区别
+>   - 怎么实现深拷贝
+>   - 举一个闭包的使用场景
+> - 国际化和换肤(我简历中有体现，但是没有好好准备)
+>   - 通过什么方式做的
+>   - 有哪几种数据是需要替换的（菜单、时间、第三方 UI 库、接口返回）
+>   - 国际化的数据如果接口返回错误的语言了怎么办（想了半天，发现是个坑，接口返回错误了当然找后端人员处理）
+
+持续了 66 分钟的电话面试，大公司问的比较细，大概有 1/3 内容没有答好，面试官挺好的，答不上来的会告诉你答案或者引导你
+
 ### 面试第二天
 
 | 公司名称 | 公司规模 | 公司性质 |
