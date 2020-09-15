@@ -46,13 +46,16 @@
   - [react 中 key 的作用是什么](#react-中-key-的作用是什么)
   - [diff 算法](#diff-算法)
   - [function Component / class Component todo](#function-component--class-component-todo)
-  - [ref todo](#ref-todo)
+  - [context](#context)
+  - [hooks](#hooks)
   - [react hooks todo](#react-hooks-todo)
   - [redux](#redux)
+    - [使用 redux 时，常用到的 api](#使用-redux-时常用到的-api)
     - [redux 数据流的走向](#redux-数据流的走向)
     - [redux 和 mobx 的区别](#redux-和-mobx-的区别)
     - [redux-saga 和 redux-thunk 对比](#redux-saga-和-redux-thunk-对比)
     - [redux-saga 常用的 api](#redux-saga-常用的-api)
+    - [umi](#umi)
   - [组件的复用](#组件的复用)
   - [react 和 vue 的区别](#react-和-vue-的区别)
 - [RN todo](#rn-todo)
@@ -1378,19 +1381,48 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 
 #### function Component / class Component todo
 
-#### ref todo
+#### context
+
+- React.createContext
+- `<MyContext.Provider value={/* some value */}>`
+- `MyClass.contextType = MyContext;` // 可以写一个 HOC，这个写在 HOC 中，就不需要每个用到的都写一遍
+
+#### hooks
+
+- useState
+- useEffect
+- useContext
+- useReducer
+- useMemo
+- useRef
 
 #### react hooks todo
 
 #### redux
 
-- 将整个应用的 state 储存在唯一的 store 对象中。
+- store: 将整个应用的 state 储存在唯一的 store 中。
 - state 只能通过触发 action 来修改，其中 action 就是一个描述性的普通对象。
-- 使用 reducer 来描述 action 如何改变 state。
+- reducer: 接收 action 和当前 state 作为参数，返回一个新的 State
+
+##### 使用 redux 时，常用到的 api
+
+- redux.createStore: `createStore(reducer, middleware)`
+- redux.combineReducers
+- store.getState
+- store.dispatch
+- [react-redux].connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
 
 > 参考：[Redux 入门教程，应用的状态管理器](https://www.jianshu.com/p/d296a8c34936)
 
 ##### redux 数据流的走向
+
+![](https://raw.githubusercontent.com/dream-approaching/pictureMaps/master/img/20200915175323.png)
+
+- 用户发出 Action: store.dispatch(action);
+- Store 自动调用 Reducer，并且传入两个参数：当前 State 和收到的 Action
+- Reducer 会返回新的 State
+- State 一旦有变化，Store 就会调用监听函数
+- listener 可以通过 store.getState()得到当前状态，触发重新渲染 View
 
 ##### redux 和 mobx 的区别
 
@@ -1398,7 +1430,7 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
   - 单一 store
   - 状态对象不可变
   - 优点：后期易维护
-  - 缺点：知识点较多，上手相对较难
+  - 缺点：繁琐、识点较多，上手相对较难
 - mobx
   - 多个 store
   - 可直接修改对象
@@ -1421,6 +1453,22 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 - createSagaMiddleware: 创建一个 Redux middleware，并将 Sagas 连接到 Redux Store。
 - takeEvery: 在发起（dispatch）到 Store 并且匹配 pattern 的每一个 action 上派生一个 saga。
 - take: 创建一个 Effect 描述信息，用来命令 middleware 在 Store 上等待指定的 action
+- put: 用于触发 action，功能上类似于 dispatch。
+- call: 用于调用异步逻辑，支持 promise 。
+- select: 可以取到 state 数据
+
+##### umi
+
+定位是开发框架，包含工具 + 路由
+
+- 优点
+  - 开箱即用: webpack + react router
+  - 做了很多优化: Tree Shaking、公共文件的智能提取、按需加载
+
+> **FAQ: umi 有啥特别的，工具用 webpack + webpack-dev-server + babel + postcss + ... ，路由用 react-router 不就完了吗?**  
+> 这是上一代的使用方式，工具是工具，库是库，泾渭分明。而近来，我们发现工具和库其实可以糅合在一起，工具也是框架的一部分。 通过约定、自动生成和解析代码等方式来辅助开发，减少开发者要写的代码量。next.js 如此，umi 也如此
+
+> 参考: [Hello！umi](https://zhuanlan.zhihu.com/p/33455048)
 
 #### 组件的复用
 
