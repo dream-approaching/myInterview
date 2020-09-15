@@ -1385,7 +1385,9 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 
 - React.createContext
 - `<MyContext.Provider value={/* some value */}>`
-- `MyClass.contextType = MyContext;` // 可以写一个 HOC，这个写在 HOC 中，就不需要每个用到的都写一遍
+- `MyClass.contextType = MyContext;` 可以写一个 HOC，这个写在 HOC 中，就不需要每个用到的都写一遍
+- MyContext.Provider
+- MyContext.Consumer
 
 #### hooks
 
