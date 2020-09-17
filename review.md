@@ -80,6 +80,7 @@
 - [其他](#其他)
     - [前端模块化](#前端模块化)
       - [ES6 模块与 CommonJS 模块的差异](#es6-模块与-commonjs-模块的差异)
+    - [前端工程化](#前端工程化)
     - [重绘和回流（重绘和重排）](#重绘和回流重绘和重排)
 
 <!-- /TOC -->
@@ -285,11 +286,11 @@ autoprefixer 不仅会帮你加-webkit-之类的 prefixer，它还会帮你删�
 - 和 js 交互
   - 可以通过 `getPropertyValue` 和 `setProperty` 方法操作
     ```js
-    const styles = getComputedStyle(document.querySelector(".foo"));
+    const styles = getComputedStyle(document.querySelector('.foo'));
     // Read value. Be sure to trim to remove whitespace.
-    const oldColor = styles.getPropertyValue("--color").trim();
+    const oldColor = styles.getPropertyValue('--color').trim();
     // Write value.
-    foo.style.setProperty("--color", "green");
+    foo.style.setProperty('--color', 'green');
     ```
 
 #### BFC
@@ -421,7 +422,7 @@ autoprefixer 不仅会帮你加-webkit-之类的 prefixer，它还会帮你删�
     function Person(name) {
       this.name = name;
     }
-    let p = new Person("longzi");
+    let p = new Person('longzi');
     console.log(p.__proto__); // Person.prototype
     console.log(Person.__proto__); // Function.prototype
     ```
@@ -440,9 +441,9 @@ autoprefixer 不仅会帮你加-webkit-之类的 prefixer，它还会帮你删�
 function Parent(name, age) {
   this.name = name;
   this.age = age;
-  this.colors = ["red", "blue", "yellow"];
+  this.colors = ['red', 'blue', 'yellow'];
 }
-Parent.prototype.showName = function() {
+Parent.prototype.showName = function () {
   console.log(this.name);
 };
 ```
@@ -450,7 +451,7 @@ Parent.prototype.showName = function() {
 - 原型链继承
   ```js
   function Child() {
-    this.type = "child";
+    this.type = 'child';
   }
   Child.prototype = new Parent();
   var a = new Child();
@@ -458,7 +459,7 @@ Parent.prototype.showName = function() {
   console.log(a.showName()); // undefined
   console.log(a.colors); // ["red","blue","yellow"]
   console.log(b.colors); // ["red","blue","yellow"]
-  a.colors.push("black");
+  a.colors.push('black');
   console.log(a.colors); // ["red","blue","yellow","black"]
   console.log(b.colors); // ["red","blue","yellow","black"]
   ```
@@ -467,9 +468,9 @@ Parent.prototype.showName = function() {
   function Child(name, age) {
     Parent.call(this, name, age); // 或apply
   }
-  var child1 = new Child("longzi", 23);
-  var child2 = new Child("xiaofeng", 18);
-  child1.colors.push("black");
+  var child1 = new Child('longzi', 23);
+  var child2 = new Child('xiaofeng', 18);
+  child1.colors.push('black');
   console.log(child1.colors); // ["red", "blue", "yellow", "black"]
   console.log(child2.colors); //["red", "blue", "yellow"]
   console.log(child1.name, child1.age); // longzi, 23
@@ -482,9 +483,9 @@ Parent.prototype.showName = function() {
     Parent.call(this, name, age); // 构造函数继承
   }
   Child.prototype = new Parent();
-  var child1 = new Child("longzi", 23);
-  var child2 = new Child("xiaofeng", 18);
-  child1.colors.push("black");
+  var child1 = new Child('longzi', 23);
+  var child2 = new Child('xiaofeng', 18);
+  child1.colors.push('black');
   console.log(child1.colors); // ["red", "blue", "yellow", "black"]
   console.log(child2.colors); //["red", "blue", "yellow"]
   console.log(child1.showName()); // longzi
@@ -496,9 +497,9 @@ Parent.prototype.showName = function() {
   }
   Child.prototype = Object.create(Parent.prototype);
   Child.prototype.constructor = Child; // 这步不要忘了
-  var child1 = new Child("longzi", 23);
-  var child2 = new Child("xiaofeng", 18);
-  child1.colors.push("black");
+  var child1 = new Child('longzi', 23);
+  var child2 = new Child('xiaofeng', 18);
+  child1.colors.push('black');
   console.log(child1.colors); // ["red", "blue", "yellow", "black"]
   console.log(child2.colors); //["red", "blue", "yellow"]
   console.log(child1.showName()); // longzi
@@ -512,7 +513,7 @@ Parent.prototype.showName = function() {
       this.colors = colors;
     }
     toString() {
-      return this.colors + " " + super.toString(); // 调用父类的toString()
+      return this.colors + ' ' + super.toString(); // 调用父类的toString()
     }
   }
   ```
@@ -548,7 +549,7 @@ new myFunction{
 
 - 例子
   ```js
-  let s = new String("abc");
+  let s = new String('abc');
   typeof s; // object
   s instanceof String; // true
   typeof null; // object
@@ -563,8 +564,8 @@ new myFunction{
   - 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是否为 B 的实例
   - 也可以判断一个实例是否是其父类型或者祖先类型的实例
     ```js
-    const person = function() {};
-    const programmer = function() {};
+    const person = function () {};
+    const programmer = function () {};
     programmer.prototype = new person();
     let nicole = new programmer();
     nicole instanceof person; // true
@@ -612,7 +613,7 @@ new myFunction{
 - 例子 1：
   ```js
   function person() {
-    let name = "Peter";
+    let name = 'Peter';
     return function displayName() {
       console.log(name);
     };
@@ -626,7 +627,7 @@ new myFunction{
   ```js
   function getCounter() {
     let counter = 0;
-    return function() {
+    return function () {
       return counter++;
     };
   }
@@ -641,22 +642,22 @@ new myFunction{
 
   ```js
   for (var i = 1; i < 10; i++) {
-    setTimeout(function() {
+    setTimeout(function () {
       console.log(i);
     }, 1000);
   }
   // 10 10 10 10 10 10 10 10 10 10
 
   for (let i = 1; i < 10; i++) {
-    setTimeout(function() {
+    setTimeout(function () {
       console.log(i);
     }, 1000);
   }
   // 1 2 3 4 5 6 7 8 9
 
   for (var i = 1; i <= 10; i++) {
-    (function(j) {
-      setTimeout(function() {
+    (function (j) {
+      setTimeout(function () {
         console.log(j);
       }, 1000);
     })(i);
@@ -755,11 +756,11 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
 - Promise.reject(reason): 返回一个新的 Promise 实例，该实例的状态为 rejected
 
   ```js
-  const p = Promise.reject("出错了");
+  const p = Promise.reject('出错了');
   // 等同于
-  const p = new Promise((resolve, reject) => reject("出错了"));
+  const p = new Promise((resolve, reject) => reject('出错了'));
 
-  p.then(null, function(s) {
+  p.then(null, function (s) {
     console.log(s);
   });
   // 出错了
@@ -777,25 +778,25 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
 
   ```js
   async function async1() {
-    console.log("async1 start");
+    console.log('async1 start');
     await async2();
-    console.log("async1 end");
+    console.log('async1 end');
   }
   async function async2() {
-    console.log("async2");
+    console.log('async2');
   }
-  console.log("script start");
-  setTimeout(function() {
-    console.log("setTimeout");
+  console.log('script start');
+  setTimeout(function () {
+    console.log('setTimeout');
   }, 0);
   async1();
-  new Promise(function(resolve) {
-    console.log("promise1");
+  new Promise(function (resolve) {
+    console.log('promise1');
     resolve();
-  }).then(function() {
-    console.log("promise2");
+  }).then(function () {
+    console.log('promise2');
   });
-  console.log("script end");
+  console.log('script end');
 
   // script start
   // async1 start
@@ -817,9 +818,9 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
 
   ```js
   function* helloWorldGenerator() {
-    yield "hello";
-    yield "world";
-    return "ending";
+    yield 'hello';
+    yield 'world';
+    return 'ending';
   }
 
   var hw = helloWorldGenerator();
@@ -849,26 +850,26 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
 
     ```js
     function* bar() {
-      yield "x";
+      yield 'x';
       yield* foo();
-      yield "y";
+      yield 'y';
     }
 
     // 等同于
     function* bar() {
-      yield "x";
-      yield "a";
-      yield "b";
-      yield "y";
+      yield 'x';
+      yield 'a';
+      yield 'b';
+      yield 'y';
     }
 
     // 等同于
     function* bar() {
-      yield "x";
+      yield 'x';
       for (let v of foo()) {
         yield v;
       }
-      yield "y";
+      yield 'y';
     }
 
     for (let v of bar()) {
@@ -921,7 +922,7 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
     } // 2 3 5 4
 
     // 字符串去重
-    [...new Set("ababbc")].join(""); //"abc"
+    [...new Set('ababbc')].join(''); //"abc"
     ```
 
   - Array.from 方法可以将 Set 结构转为数组。
@@ -971,9 +972,9 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
       ```js
       const m = new Map();
 
-      m.set("edition", 6); // 键是字符串
-      m.set(262, "standard"); // 键是数值
-      m.set(undefined, "nah"); // 键是 undefined
+      m.set('edition', 6); // 键是字符串
+      m.set(262, 'standard'); // 键是数值
+      m.set(undefined, 'nah'); // 键是 undefined
       ```
 
     - get(key):读取 key 对应的键值，如果找不到 key，返回 undefined。
@@ -1002,8 +1003,8 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
   let s = Symbol();
   typeof s; // "symbol"
 
-  let s1 = Symbol("foo");
-  let s2 = Symbol("bar");
+  let s1 = Symbol('foo');
+  let s2 = Symbol('bar');
   s1; // Symbol(foo)
   s2; // Symbol(bar)
   s1.toString(); // "Symbol(foo)"
@@ -1057,7 +1058,7 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
   - 返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名。
   - 例子：
     ```js
-    var obj = { foo: "bar", baz: 42 };
+    var obj = { foo: 'bar', baz: 42 };
     Object.keys(obj);
     // ["foo", "baz"]
     ```
@@ -1066,7 +1067,7 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
   - 只返回对象自身的可遍历属性
   - 例子：
     ```js
-    const obj = { foo: "bar", baz: 42 };
+    const obj = { foo: 'bar', baz: 42 };
     Object.values(obj);
     // ["bar", 42]
     ```
@@ -1074,7 +1075,7 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
   - 方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组
   - 例子
     ```js
-    const obj = { foo: "bar", baz: 42 };
+    const obj = { foo: 'bar', baz: 42 };
     Object.entries(obj);
     // [ ["foo", "bar"], ["baz", 42] ]
     ```
@@ -1103,7 +1104,7 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
   - 参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为 true 的成员，然后返回该成员。
   - 如果没有符合条件的成员，则返回 undefined。
     ```js
-    [1, 5, 10, 15].find(function(value, index, arr) {
+    [1, 5, 10, 15].find(function (value, index, arr) {
       return value > 9;
     }); // 10
     ```
@@ -1162,9 +1163,9 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
 
     ```js
     var arr = [
-      { id: 1, type: "A", total: 3 },
-      { id: 2, type: "B", total: 5 },
-      { id: 3, type: "E", total: 7 },
+      { id: 1, type: 'A', total: 3 },
+      { id: 2, type: 'B', total: 5 },
+      { id: 3, type: 'E', total: 7 },
     ];
     // 统计 total 的总和
     arr.reduce((sum, { total }) => {
@@ -1218,40 +1219,40 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
 - 例子
 
   ```js
-  console.log("1");
+  console.log('1');
 
-  setTimeout(function() {
-    console.log("2");
-    process.nextTick(function() {
-      console.log("3");
+  setTimeout(function () {
+    console.log('2');
+    process.nextTick(function () {
+      console.log('3');
     });
-    new Promise(function(resolve) {
-      console.log("4");
+    new Promise(function (resolve) {
+      console.log('4');
       resolve();
-    }).then(function() {
-      console.log("5");
+    }).then(function () {
+      console.log('5');
     });
   }, 500);
-  process.nextTick(function() {
-    console.log("6");
+  process.nextTick(function () {
+    console.log('6');
   });
-  new Promise(function(resolve) {
-    console.log("7");
+  new Promise(function (resolve) {
+    console.log('7');
     resolve();
-  }).then(function() {
-    console.log("8");
+  }).then(function () {
+    console.log('8');
   });
 
-  setTimeout(function() {
-    console.log("9");
-    process.nextTick(function() {
-      console.log("10");
+  setTimeout(function () {
+    console.log('9');
+    process.nextTick(function () {
+      console.log('10');
     });
-    new Promise(function(resolve) {
-      console.log("11");
+    new Promise(function (resolve) {
+      console.log('11');
       resolve();
-    }).then(function() {
-      console.log("12");
+    }).then(function () {
+      console.log('12');
     });
   }, 1000);
   // 1，7，6，8，2，4，3，5，9，11，10，12
@@ -1287,7 +1288,7 @@ Promise 是异步编程的一种解决方案, 有以下两个特点:
 const deepClone = (obj) => {
   let clone = Object.assign({}, obj);
   Object.keys(clone).forEach(
-    (key) => (clone[key] = typeof obj[key] === "object" ? deepClone(obj[key]) : obj[key])
+    (key) => (clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key])
   );
   return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone;
 };
@@ -1296,7 +1297,7 @@ const deepClone = (obj) => {
 function deepClone(obj) {
   let clone = Object.assign({}, obj);
   Object.keys(clone).forEach((item) => {
-    if (typeof clone[item] === "object") {
+    if (typeof clone[item] === 'object') {
       clone[item] = deepClone(clone[item]);
     }
     clone[item] = clone[item];
@@ -1325,7 +1326,7 @@ function deepClone(obj) {
     // 简单实现
     const debounce = (fn, ms = 0) => {
       let timeoutId;
-      return function(...args) {
+      return function (...args) {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => fn.apply(this, args), ms);
       };
@@ -1343,7 +1344,7 @@ function deepClone(obj) {
     let canRun = true;
     let timer;
     let lastTime = Date.now();
-    return function(...args) {
+    return function (...args) {
       if (canRun) {
         fn.apply(this, args);
         canRun = false;
@@ -1375,7 +1376,7 @@ function deepClone(obj) {
     function createCurry(func, args) {
       var arity = func.length;
       var args = args || [];
-      return function() {
+      return function () {
         var _args = [].slice.call(arguments);
         [].push.apply(_args, args);
         // 如果参数个数小于最初的func.length，则递归调用，继续收集参数
@@ -1500,7 +1501,7 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 - 可迭代的 children，跟数组的处理方式差不多
 
 > - 参考：[Deep In React 之浅谈 React Fiber 架构(一)](https://mp.weixin.qq.com/s/dONYc-Y96baiXBXpwh1w3A)
-> - 参考：[Deep In React 之详谈 React 16 Diff 策略(二)](https://juejin.im/post/6844903901590716429)
+> - 参考：[Deep In React 之详谈 React 16 Diff 策略(二)](https://segmentfault.com/a/1190000019918133)
 > - 参考：[老的 react diff：React 源码剖析系列 － 不可思议的 react diff](https://zhuanlan.zhihu.com/p/20346379)
 > - 参考：[segmentfault——React 的 diff 算法](https://segmentfault.com/a/1190000000606216)
 > - 参考：[React Fiber 是什么](https://zhuanlan.zhihu.com/p/26027085)
@@ -1792,13 +1793,13 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
   - jsonp: 即 JSON with padding。因为 script 标签是不会跨域的，利用这个特性，可以解决跨域，兼容性很好，但是只支持 GET 方式
     ```js
     //需要跨域的时候可以创建一个script标签
-    var jsonp = document.createElement("script");
+    var jsonp = document.createElement('script');
     //指定类型
-    jsonp.type = "text/javascript";
+    jsonp.type = 'text/javascript';
     //添加链接地址
-    jsonp.src = "http://10.0.154.249/text.js?callback=jsonpCallback";
+    jsonp.src = 'http://10.0.154.249/text.js?callback=jsonpCallback';
     //将这个拼接 添加到head标签中。
-    document.getElementsByTagName("head")[0].appendChild(jsonp);
+    document.getElementsByTagName('head')[0].appendChild(jsonp);
     //回调函数
     function jsonpCallback(ret) {
       alert(ret);
@@ -1808,9 +1809,9 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
   - postMessage：postMessage(data,origin)
     ```js
     // 父页面发送消息
-    window.frames[0].postMessage("message", origin);
+    window.frames[0].postMessage('message', origin);
     // 子页面监听自身的message事件来获取传过来的消息
-    window.addEventListener("message", function(e) {
+    window.addEventListener('message', function (e) {
       if (e.source != window.parent) return; //若消息源不是父页面则退出
       //TODO ...
     });
@@ -1866,10 +1867,10 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 
   ```js
   // CommonJS模块
-  let { stat, exists, readFile } = require("fs");
+  let { stat, exists, readFile } = require('fs');
 
   // 等同于
-  let _fs = require("fs");
+  let _fs = require('fs');
   let stat = _fs.stat;
   let exists = _fs.exists;
   let readfile = _fs.readfile;
@@ -1879,10 +1880,19 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 
   ```js
   // ES6模块
-  import { stat, exists, readFile } from "fs";
+  import { stat, exists, readFile } from 'fs';
   ```
 
   上面代码的实质是从 fs 模块加载 3 个方法，其他方法不加载。这种加载称为“编译时加载”或者静态加载，即 ES6 可以在编译时就完成模块加载，效率要比 CommonJS 模块的加载方式高。当然，这也导致了没法引用 ES6 模块本身，因为它不是对象。
+
+#### 前端工程化
+
+个人理解: 软件是从无到有的，前端工程化是指在开发过程中，提高开发效率，减少后期维护成本的一个方案。它应该考虑以下几个因素：
+
+- 模块化
+- 组件化
+- 规范化(目录结构, 统一的编码规范, 文档规范, git 分支管理, mock 数据, 接口返回格式)
+- 自动化(自动化测试, 自动化部署)
 
 #### 重绘和回流（重绘和重排）
 
@@ -1904,21 +1914,21 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
     // bad
     var left = 10,
       top = 10;
-    el.style.left = left + "px";
-    el.style.top = top + "px";
+    el.style.left = left + 'px';
+    el.style.top = top + 'px';
     // better
-    el.className += " theclassname";
+    el.className += ' theclassname';
     // 当top和left的值是动态计算而成时...
     // better
-    el.style.cssText += "; left: " + left + "px; top: " + top + "px;";
+    el.style.cssText += '; left: ' + left + 'px; top: ' + top + 'px;';
     ```
 
   - 不要频繁计算样式
     ```js
     // no-no!
     for (big; loop; here) {
-      el.style.left = el.offsetLeft + 10 + "px";
-      el.style.top = el.offsetTop + 10 + "px";
+      el.style.left = el.offsetLeft + 10 + 'px';
+      el.style.top = el.offsetTop + 10 + 'px';
     }
     // better
     var left = el.offsetLeft,
@@ -1927,8 +1937,8 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
     for (big; loop; here) {
       left += 10;
       top += 10;
-      esty.left = left + "px";
-      esty.top = top + "px";
+      esty.left = left + 'px';
+      esty.top = top + 'px';
     }
     ```
   - 对于 resize、scroll 等进行防抖/节流处理

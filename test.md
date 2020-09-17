@@ -31,7 +31,7 @@
     - [13.6 Webpack 构建流程简单说一下](#136-webpack-构建流程简单说一下)
     - [13.7 如何优化 Webpack 的构建速度？](#137-如何优化-webpack-的构建速度)
     - [13.8 什么是 Tree shaking？如何开启](#138-什么是-tree-shaking如何开启)
-    - [13.9 如何实现代码分割](#139-如何实现代码分割)
+    - [13.9 如何实现代码分割 code splitting](#139-如何实现代码分割-code-splitting)
     - [13.10 webpack 中如何处理图片的](#1310-webpack-中如何处理图片的)
   - [14 slice、substr 和 substring 有什么区别](#14-slicesubstr-和-substring-有什么区别)
   - [15. react-redux connect 的原理是什么](#15-react-redux-connect-的原理是什么)
@@ -403,7 +403,7 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 - Tree-shaking 是指在打包中取出那些引入了但在代码中没有被用到的死代码。
 - webpack 中通过 uglifysPlugin 来 Tree-shaking JS。
 
-#### 13.9 如何实现代码分割
+#### 13.9 如何实现代码分割 code splitting
 
 有三种方式
 
