@@ -39,6 +39,7 @@
   - [17. CSS3 有哪些新特性](#17-css3-有哪些新特性)
   - [18. ES6 有哪些新特性](#18-es6-有哪些新特性)
   - [19. 常用浏览器内核以及 css 前缀](#19-常用浏览器内核以及-css-前缀)
+  - [git-flow 有了解过吗](#git-flow-有了解过吗)
 
 <!-- /TOC -->
 
@@ -72,8 +73,8 @@ a:visited {
 
 ```js
 function showName() {
-  const firstName = 'zheng';
-  return function () {
+  const firstName = "zheng";
+  return function() {
     console.log(`${firstName} longzi`);
   };
 }
@@ -86,7 +87,7 @@ fn(); // zheng longzi
 ```js
 function curry(fn, args1 = []) {
   const { length } = fn;
-  return function (...args2) {
+  return function(...args2) {
     const args = [...args1, ...args2];
     if (args.length < length) {
       return curry.call(this, fn, args);
@@ -101,7 +102,7 @@ function curry(fn, args1 = []) {
 ```js
 function debounce(fn, ms) {
   let timer;
-  return function (...args) {
+  return function(...args) {
     clearTimeout(timer);
     timer = setTimeout(() => {
       fn.apply(this, args);
@@ -141,7 +142,7 @@ function throttle = (fn, ms) => {
 function deepClone(obj) {
   let clone = Object.assign({}, obj);
   Object.keys(clone).forEach((item) => {
-    if (typeof clone[item] === 'object') {
+    if (typeof clone[item] === "object") {
       clone[item] = deepClone(clone[item]);
     }
     clone[item] = clone[item];
@@ -200,18 +201,18 @@ xhr.send(null)
 ### 3.点击一个 input 依次触发的事件
 
 ```js
-const text = document.getElementById('text');
-text.onclick = function (e) {
-  console.log('onclick');
+const text = document.getElementById("text");
+text.onclick = function(e) {
+  console.log("onclick");
 };
-text.onfocus = function (e) {
-  console.log('onfocus');
+text.onfocus = function(e) {
+  console.log("onfocus");
 };
-text.onmousedown = function (e) {
-  console.log('onmousedown');
+text.onmousedown = function(e) {
+  console.log("onmousedown");
 };
-text.onmouseenter = function (e) {
-  console.log('onmouseenter');
+text.onmouseenter = function(e) {
+  console.log("onmouseenter");
 };
 
 // 'nmouseenter => onmousedown => onfocus => onclick
@@ -284,12 +285,12 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 
 - 动态计算 font-size
   ```js
-  (function () {
+  (function() {
     var html = document.documentElement;
     function onWindowResize() {
-      html.style.fontSize = html.getBoundingClientRect().width / 20 + 'px';
+      html.style.fontSize = html.getBoundingClientRect().width / 20 + "px";
     }
-    window.addEventListener('resize', onWindowResize);
+    window.addEventListener("resize", onWindowResize);
     onWindowResize();
   })();
   ```
@@ -549,3 +550,9 @@ test.slice(2, 5); // "llo"
   - -moz-transform:rotate(7deg); // -moz-代表火狐浏览器识别前缀
   - -webkit-transform:rotate(7deg); // -webkit-代表谷歌和 Safari 浏览器识别前缀
   - -o-transform:rotate(7deg); // -o- 代表 Opera 浏览器识别前缀
+
+### git-flow 有了解过吗
+
+- 是一个别人定义好的工作流程
+- 并不会为 Git 扩展任何新的功能
+- 安装 git-flow，会拥有一些扩展命令
