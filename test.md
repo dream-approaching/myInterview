@@ -1,51 +1,51 @@
 <!-- TOC -->
 
-- [常见面试题](#常见面试题)
-  - [1.如何解决 a 标签点击后 hover 事件失效的问题?](#1如何解决-a-标签点击后-hover-事件失效的问题)
-  - [2.常见手写函数](#2常见手写函数)
-    - [闭包](#闭包)
-    - [柯里化](#柯里化)
-    - [防抖](#防抖)
-    - [节流](#节流)
-    - [深拷贝](#深拷贝)
-    - [继承](#继承)
-    - [new 内部原理](#new-内部原理)
-    - [实现一个 ajax](#实现一个-ajax)
-  - [3.点击一个 input 依次触发的事件](#3点击一个-input-依次触发的事件)
-  - [4. Vue/React 中 hash 模式和 history 模式的区别](#4-vuereact-中-hash-模式和-history-模式的区别)
-  - [5.数组去重](#5数组去重)
-  - [6.addEventListener 函数的第三个参数](#6addeventlistener-函数的第三个参数)
-  - [7.所有的事件都有冒泡吗？](#7所有的事件都有冒泡吗)
-  - [8.typeof 和 instanceof 的区别](#8typeof-和-instanceof-的区别)
-  - [9.在移动端中怎样初始化根元素的字体大小](#9在移动端中怎样初始化根元素的字体大小)
-  - [10.移动端布局](#10移动端布局)
-  - [11.知道 meta 标签有把 http 换成 https 的功能吗](#11知道-meta-标签有把-http-换成-https-的功能吗)
-  - [12.性能优化](#12性能优化)
-    - [12.1 React 中怎么优化性能](#121-react-中怎么优化性能)
-  - [13.webpack](#13webpack)
-    - [13.1 webpack 和 gulp 区别](#131-webpack-和-gulp-区别)
-    - [13.2 webpack 怎么打包多页面](#132-webpack-怎么打包多页面)
-    - [13.3 有哪些常见的 Loader？你用过哪些 Loader？](#133-有哪些常见的-loader你用过哪些-loader)
-    - [13.4 有哪些常见的 Plugin？你用过哪些 Plugin？](#134-有哪些常见的-plugin你用过哪些-plugin)
-    - [13.5 说一说 Loader 和 Plugin 的区别?](#135-说一说-loader-和-plugin-的区别)
-    - [13.6 Webpack 构建流程简单说一下](#136-webpack-构建流程简单说一下)
-    - [13.7 如何优化 Webpack 的构建速度？](#137-如何优化-webpack-的构建速度)
-    - [13.8 什么是 Tree shaking？如何开启](#138-什么是-tree-shaking如何开启)
-    - [13.9 如何实现代码分割 code splitting](#139-如何实现代码分割-code-splitting)
-    - [13.10 webpack 中如何处理图片的](#1310-webpack-中如何处理图片的)
-  - [14 slice、substr 和 substring 有什么区别](#14-slicesubstr-和-substring-有什么区别)
-  - [15. react-redux connect 的原理是什么](#15-react-redux-connect-的原理是什么)
-  - [16.HTML5 有哪些新特性](#16html5-有哪些新特性)
-  - [17. CSS3 有哪些新特性](#17-css3-有哪些新特性)
-  - [18. ES6 有哪些新特性](#18-es6-有哪些新特性)
-  - [19. 常用浏览器内核以及 css 前缀](#19-常用浏览器内核以及-css-前缀)
-  - [git-flow 有了解过吗](#git-flow-有了解过吗)
+- [1. 常见面试题](#1-常见面试题)
+    - [1.1. 如何解决 a 标签点击后 hover 事件失效的问题?](#11-如何解决-a-标签点击后-hover-事件失效的问题)
+    - [1.2. 常见手写函数](#12-常见手写函数)
+        - [1.2.1. 闭包](#121-闭包)
+        - [1.2.2. 柯里化](#122-柯里化)
+        - [1.2.3. 防抖](#123-防抖)
+        - [1.2.4. 节流](#124-节流)
+        - [1.2.5. 深拷贝](#125-深拷贝)
+        - [1.2.6. 继承](#126-继承)
+        - [1.2.7. new 内部原理](#127-new-内部原理)
+        - [1.2.8. 实现一个 ajax](#128-实现一个-ajax)
+    - [1.3. 点击一个 input 依次触发的事件](#13-点击一个-input-依次触发的事件)
+    - [1.4. Vue/React 中 hash 模式和 history 模式的区别](#14-vuereact-中-hash-模式和-history-模式的区别)
+    - [1.5. 数组去重](#15-数组去重)
+    - [1.6. addEventListener 函数的第三个参数](#16-addeventlistener-函数的第三个参数)
+    - [1.7. 所有的事件都有冒泡吗？](#17-所有的事件都有冒泡吗)
+    - [1.8. typeof 和 instanceof 的区别](#18-typeof-和-instanceof-的区别)
+    - [1.9. 在移动端中怎样初始化根元素的字体大小](#19-在移动端中怎样初始化根元素的字体大小)
+    - [1.10. 移动端布局](#110-移动端布局)
+    - [1.11. 知道 meta 标签有把 http 换成 https 的功能吗](#111-知道-meta-标签有把-http-换成-https-的功能吗)
+    - [1.12. 性能优化](#112-性能优化)
+        - [1.12.1. React 中怎么优化性能](#1121-react-中怎么优化性能)
+    - [1.13. webpack](#113-webpack)
+        - [1.13.1. webpack 和 gulp 区别](#1131-webpack-和-gulp-区别)
+        - [1.13.2. webpack 怎么打包多页面](#1132-webpack-怎么打包多页面)
+        - [1.13.3. 有哪些常见的 Loader？你用过哪些 Loader？](#1133-有哪些常见的-loader你用过哪些-loader)
+        - [1.13.4. 有哪些常见的 Plugin？你用过哪些 Plugin？](#1134-有哪些常见的-plugin你用过哪些-plugin)
+        - [1.13.5. 说一说 Loader 和 Plugin 的区别?](#1135-说一说-loader-和-plugin-的区别)
+        - [1.13.6. Webpack 构建流程简单说一下](#1136-webpack-构建流程简单说一下)
+        - [1.13.7. 如何优化 Webpack 的构建速度？](#1137-如何优化-webpack-的构建速度)
+        - [1.13.8. 什么是 Tree shaking？如何开启](#1138-什么是-tree-shaking如何开启)
+        - [1.13.9. 如何实现代码分割 code splitting](#1139-如何实现代码分割-code-splitting)
+        - [1.13.10. webpack 中如何处理图片的](#11310-webpack-中如何处理图片的)
+    - [1.14. slice、substr 和 substring 有什么区别](#114-slicesubstr-和-substring-有什么区别)
+    - [1.15. react-redux connect 的原理是什么](#115-react-redux-connect-的原理是什么)
+    - [1.16. HTML5 有哪些新特性](#116-html5-有哪些新特性)
+    - [1.17. CSS3 有哪些新特性](#117-css3-有哪些新特性)
+    - [1.18. ES6 有哪些新特性](#118-es6-有哪些新特性)
+    - [1.19. 常用浏览器内核以及 css 前缀](#119-常用浏览器内核以及-css-前缀)
+    - [1.20. git-flow 有了解过吗](#120-git-flow-有了解过吗)
 
 <!-- /TOC -->
 
-## 常见面试题
+# 1. 常见面试题
 
-### 1.如何解决 a 标签点击后 hover 事件失效的问题?
+## 1.1. 如何解决 a 标签点击后 hover 事件失效的问题?
 
 改变 a 标签 css 属性的排列顺序,只需要记住`LoVe HAte`原则就可以了：
 
@@ -67,9 +67,9 @@ a:visited {
 }
 ```
 
-### 2.常见手写函数
+## 1.2. 常见手写函数
 
-#### 闭包
+### 1.2.1. 闭包
 
 ```js
 function showName() {
@@ -82,7 +82,7 @@ const fn = showName();
 fn(); // zheng longzi
 ```
 
-#### 柯里化
+### 1.2.2. 柯里化
 
 ```js
 function curry(fn, args1 = []) {
@@ -97,7 +97,7 @@ function curry(fn, args1 = []) {
 }
 ```
 
-#### 防抖
+### 1.2.3. 防抖
 
 ```js
 function debounce(fn, ms) {
@@ -111,7 +111,7 @@ function debounce(fn, ms) {
 }
 ```
 
-#### 节流
+### 1.2.4. 节流
 
 ```js
 function throttle = (fn, ms) => {
@@ -136,7 +136,7 @@ function throttle = (fn, ms) => {
 }
 ```
 
-#### 深拷贝
+### 1.2.5. 深拷贝
 
 ```js
 function deepClone(obj) {
@@ -155,7 +155,7 @@ function deepClone(obj) {
 }
 ```
 
-#### 继承
+### 1.2.6. 继承
 
 ```js
 function Parent() {}
@@ -166,7 +166,7 @@ Child.prototype = Object.create(Parent.prototype);
 Child.prototype.constructor = Child;
 ```
 
-#### new 内部原理
+### 1.2.7. new 内部原理
 
 ```js
 var a = new myFunction("Li","Cherry");
@@ -178,7 +178,7 @@ new MyFunction {
 }
 ```
 
-#### 实现一个 ajax
+### 1.2.8. 实现一个 ajax
 
 ```js
 var xhr = new XMLHttpRequest()
@@ -198,7 +198,7 @@ xhr.open('get', '/api/getSth',  true)
 xhr.send(null)
 ```
 
-### 3.点击一个 input 依次触发的事件
+## 1.3. 点击一个 input 依次触发的事件
 
 ```js
 const text = document.getElementById("text");
@@ -218,13 +218,13 @@ text.onmouseenter = function(e) {
 // 'nmouseenter => onmousedown => onfocus => onclick
 ```
 
-### 4. Vue/React 中 hash 模式和 history 模式的区别
+## 1.4. Vue/React 中 hash 模式和 history 模式的区别
 
 - 最明显的是在显示上，hash 模式的 URL 中会夹杂着#号，而 history 没有。
 - hash 模式是依靠 onhashchange 事件(监听 location.hash 的改变)，而 history 模式是主要是依靠的 HTML5 history 的方法
 - 这时候 history 模式需要后端的支持。因为 history 模式下，前端的 URL 必须和实际向后端发送请求的 URL 一致。所以需要后端增加一个覆盖所有情况的候选资源，一般会配合前端给出的一个 404 页面。
 
-### 5.数组去重
+## 1.5. 数组去重
 
 - `Array.from(new Set(arr))` / `[...new Set(arr)]`
 - 利用 includes
@@ -255,13 +255,13 @@ let intersect = new Set([...a].filter((x) => b.has(x)));
 let difference = new Set([...a].filter((x) => !b.has(x)));
 ```
 
-### 6.addEventListener 函数的第三个参数
+## 1.6. addEventListener 函数的第三个参数
 
 第三个参数涉及到冒泡和捕获，是 true 时为捕获，是 false 则为冒泡 默认值。
 
 或者是一个对象{passive: true}，针对的是 Safari 浏览器，禁止/开启使用滚动的时候要用到。
 
-### 7.所有的事件都有冒泡吗？
+## 1.7. 所有的事件都有冒泡吗？
 
 并不是所有的事件都有冒泡的，例如以下事件就没有：
 
@@ -270,7 +270,7 @@ let difference = new Set([...a].filter((x) => !b.has(x)));
 - onmouseenter
 - onmouseleave
 
-### 8.typeof 和 instanceof 的区别
+## 1.8. typeof 和 instanceof 的区别
 
 typeof 表示是对某个变量类型的检测，基本数据类型除了 null 都能正常的显示为对应的类型，引用类型除了函数会显示为'function'，其它都显示为 object。
 
@@ -281,7 +281,7 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 - 基本类型： string, number, boolean, undefined, null, Symbol, bigInt(es10 新增)
 - 引用类型： function, array, object
 
-### 9.在移动端中怎样初始化根元素的字体大小
+## 1.9. 在移动端中怎样初始化根元素的字体大小
 
 - 动态计算 font-size
   ```js
@@ -297,13 +297,13 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 - 还需要配合一个 meta 头
   `<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-sacle=1.0, maximum-scale=1.0, user-scalable=no" />`
 
-### 10.移动端布局
+## 1.10. 移动端布局
 
 - 移动端布局的方式主要使用 rem 和 flex，可以结合 rem 和媒体查询，然后不同的上视口大小下设置设置 html 的 font-size。
 - 可单独制作移动端页面也可响应式 pc 端移动端共用一个页面。没有好坏，视情况而定，因势利导
 - 我一般是结合两个库`postcss-pxtorem`和`lib-flexible`，前者用于转换单位，后者用于修改根节点字体大小
 
-### 11.知道 meta 标签有把 http 换成 https 的功能吗
+## 1.11. 知道 meta 标签有把 http 换成 https 的功能吗
 
 利用 meta 标签把 http 请求换为 https
 
@@ -311,14 +311,14 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 ```
 
-### 12.性能优化
+## 1.12. 性能优化
 
 - 降低请求量：合并资源，减少 HTTP 请求数，minify / gzip 压缩，webP，图片 lazyLoad。
 - 加快请求速度：预解析 DNS，减少域名数，并行加载，CDN 分发。
 - 缓存：HTTP 协议缓存请求，离线数据缓存 localStorage。
 - 渲染：JS/CSS 优化（避免使用 CSS 表达式），加载顺序（将 CSS 样式表放在顶部，把 javascript 放在底部），服务端渲染，pipeline。
 
-#### 12.1 React 中怎么优化性能
+### 1.12.1. React 中怎么优化性能
 
 主要是指代码层面上
 
@@ -336,21 +336,21 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 - 用 CSS 动画代替 JavaScript 动画
 - React 组件的服务端渲染
 
-### 13.webpack
+## 1.13. webpack
 
-#### 13.1 webpack 和 gulp 区别
+### 1.13.1. webpack 和 gulp 区别
 
 - gulp 强调的是前端开发的工作流程，我们可以通过配置一系列的 task，定义 task 处理的事务
 - webpack 是一个前端模块化方案，更侧重模块打包
 
-#### 13.2 webpack 怎么打包多页面
+### 1.13.2. webpack 怎么打包多页面
 
 需要在单页面的基础上改动 2 个地方
 
 - entry 中添加每个页面对应的入口文件
 - html-webpack-plugin 添加每个页面对应的 html 模板
 
-#### 13.3 有哪些常见的 Loader？你用过哪些 Loader？
+### 1.13.3. 有哪些常见的 Loader？你用过哪些 Loader？
 
 - `file-loader`：把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件 (处理图片和字体)
 - `url-loader`：与 file-loader 类似，区别是用户可以设置一个阈值，大于阈值会交给 file-loader 处理，小于阈值时返回文件 base64 形式编码 (处理图片和字体)
@@ -363,7 +363,7 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 
 > 说几个就好
 
-#### 13.4 有哪些常见的 Plugin？你用过哪些 Plugin？
+### 1.13.4. 有哪些常见的 Plugin？你用过哪些 Plugin？
 
 - `define-plugin`：定义环境变量 (Webpack4 之后指定 mode 会自动配置)
 - `html-webpack-plugin`：简化 HTML 文件创建 (依赖于 html-loader)
@@ -372,7 +372,7 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 - `clean-webpack-plugin`: 目录清理
 - `webpack-bundle-analyzer`: 可视化 Webpack 输出文件的体积 (业务组件、依赖第三方模块)
 
-#### 13.5 说一说 Loader 和 Plugin 的区别?
+### 1.13.5. 说一说 Loader 和 Plugin 的区别?
 
 - Loader
   - 本质是一个函数，在该函数中对接收到的内容进行转换
@@ -382,13 +382,13 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
   - 在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。
   - 在 plugins 中单独配置
 
-#### 13.6 Webpack 构建流程简单说一下
+### 1.13.6. Webpack 构建流程简单说一下
 
 - 初始化参数
 - 开始编译 => 确定入口 => 编译模块 => 完成模块编译
 - 输出资源 => 输出完成
 
-#### 13.7 如何优化 Webpack 的构建速度？
+### 1.13.7. 如何优化 Webpack 的构建速度？
 
 - 使用高版本的 Webpack 和 Node.js
 - 多进程/多实例构建
@@ -398,12 +398,12 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 - 提取页面公共资源
 - Tree shaking
 
-#### 13.8 什么是 Tree shaking？如何开启
+### 1.13.8. 什么是 Tree shaking？如何开启
 
 - Tree-shaking 是指在打包中取出那些引入了但在代码中没有被用到的死代码。
 - webpack 中通过 uglifysPlugin 来 Tree-shaking JS。
 
-#### 13.9 如何实现代码分割 code splitting
+### 1.13.9. 如何实现代码分割 code splitting
 
 有三种方式
 
@@ -411,14 +411,14 @@ instanceof 主要是用于实例的判断。 `A instanceof B` 用来判断 A 是
 - 抽取公有代码：使用 SplitChunks 抽取公有代码；
 - 动态加载 ：动态加载一些代码。
 
-#### 13.10 webpack 中如何处理图片的
+### 1.13.10. webpack 中如何处理图片的
 
 在 webpack 中有两种处理图片的 loader：
 
 file-loader：解决 CSS 等中引入图片的路径问题；(解决通过 url,import/require()等引入图片的问题)
 url-loader：当图片小于设置的 limit 参数值时，url-loader 将图片进行 base64 编码(当项目中有很多图片，通过 url-loader 进行 base64 编码后会减少 http 请求数量，提高性能)，大于 limit 参数值，则使用 file-loader 拷贝图片并输出到编译目录中；
 
-### 14 slice、substr 和 substring 有什么区别
+## 1.14. slice、substr 和 substring 有什么区别
 
 `var test = 'hello world';`
 
@@ -431,7 +431,7 @@ test.substring(2, 5) === test.substring(5, 2); // "llo"
 test.slice(2, 5); // "llo"
 ```
 
-### 15. react-redux connect 的原理是什么
+## 1.15. react-redux connect 的原理是什么
 
 - `connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])`
 - connect 的作用是连接 React 组件与 Redux store
@@ -441,7 +441,7 @@ test.slice(2, 5); // "llo"
 
 > 有点答非所问，随便瞎扯一点吧，总比呆呆的说不会好
 
-### 16.HTML5 有哪些新特性
+## 1.16. HTML5 有哪些新特性
 
 - 新增标签
   - 结构化标签: article, aside, header, footer, figure, section, nav, main, mark
@@ -468,7 +468,7 @@ test.slice(2, 5); // "llo"
   | range | height and width |
   | search | min and max |
 
-### 17. CSS3 有哪些新特性
+## 1.17. CSS3 有哪些新特性
 
 - 新增很多选择器
   - :root: 选择文档的根元素
@@ -496,7 +496,7 @@ test.slice(2, 5); // "llo"
 - @font-face 特性
 - flex 布局
 
-### 18. ES6 有哪些新特性
+## 1.18. ES6 有哪些新特性
 
 - const let
 - 解构赋值（数组，对象，字符串）
@@ -537,7 +537,7 @@ test.slice(2, 5); // "llo"
 > 参考：[再来一打 Webpack 面试题](https://juejin.im/post/6844904094281236487)
 > 参考：[霖呆呆的近期面试 128 题汇总(含超详细答案)](https://juejin.im/post/6844904151369908232)
 
-### 19. 常用浏览器内核以及 css 前缀
+## 1.19. 常用浏览器内核以及 css 前缀
 
 - 内核
   - IE 内核: IE、傲游、世界之窗、百度浏览器。`-ms`
@@ -551,7 +551,7 @@ test.slice(2, 5); // "llo"
   - -webkit-transform:rotate(7deg); // -webkit-代表谷歌和 Safari 浏览器识别前缀
   - -o-transform:rotate(7deg); // -o- 代表 Opera 浏览器识别前缀
 
-### git-flow 有了解过吗
+## 1.20. git-flow 有了解过吗
 
 - 是一个别人定义好的工作流程
 - 并不会为 Git 扩展任何新的功能
