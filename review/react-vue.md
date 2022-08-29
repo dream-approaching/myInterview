@@ -8,16 +8,23 @@
     - [1.5. function Component / class Component todo](#15-function-component--class-component-todo)
     - [1.6. context](#16-context)
     - [1.7. hooks](#17-hooks)
-    - [1.8. react hooks todo](#18-react-hooks-todo)
-    - [1.9. redux](#19-redux)
-        - [1.9.1. 使用 redux 时，常用到的 api](#191-使用-redux-时常用到的-api)
-        - [1.9.2. redux 数据流的走向](#192-redux-数据流的走向)
-        - [1.9.3. redux 和 mobx 的区别](#193-redux-和-mobx-的区别)
-        - [1.9.4. redux-saga 和 redux-thunk 对比](#194-redux-saga-和-redux-thunk-对比)
-        - [1.9.5. redux-saga 常用的 api](#195-redux-saga-常用的-api)
-        - [1.9.6. umi](#196-umi)
-    - [1.10. 组件的复用](#110-组件的复用)
-    - [1.11. react 和 vue 的区别](#111-react-和-vue-的区别)
+        - [1.7.1. 优点](#171-优点)
+        - [1.7.2. 常用hooks](#172-常用hooks)
+    - [1.8. redux](#18-redux)
+        - [1.8.1. 使用 redux 时，常用到的 api](#181-使用-redux-时常用到的-api)
+        - [1.8.2. redux 数据流的走向](#182-redux-数据流的走向)
+        - [1.8.3. redux 和 mobx 的区别](#183-redux-和-mobx-的区别)
+        - [1.8.4. redux-saga 和 redux-thunk 对比](#184-redux-saga-和-redux-thunk-对比)
+        - [1.8.5. redux-saga 常用的 api](#185-redux-saga-常用的-api)
+        - [1.8.6. umi](#186-umi)
+    - [1.9. 组件的复用](#19-组件的复用)
+- [2. Vue](#2-vue)
+- [3. React 和 Vue 异同点](#3-react-和-vue-异同点)
+    - [3.1. 相同点](#31-相同点)
+        - [3.1.1. hooks](#311-hooks)
+    - [3.2. 不同点](#32-不同点)
+        - [3.2.1. hooks](#321-hooks)
+        - [3.2.2. 其他](#322-其他)
 
 <!-- /TOC -->
 # 1. React
@@ -107,6 +114,13 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 
 ## 1.7. hooks
 
+### 1.7.1. 优点
+- 更好的逻辑复用与代码组织
+- 减小了代码体积
+- 不用考虑 `this`
+- 不编写 class 的情况下使用 state
+
+### 1.7.2. 常用hooks
 - useState
 - useEffect
 - useContext
@@ -117,15 +131,14 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
   - 名称以 “use” 开头
   - 函数内部可以调用其他的 Hook
 
-## 1.8. react hooks todo
 
-## 1.9. redux
+## 1.8. redux
 
 - store: 将整个应用的 state 储存在唯一的 store 中。
 - state 只能通过触发 action 来修改，其中 action 就是一个描述性的普通对象。
 - reducer: 接收 action 和当前 state 作为参数，返回一个新的 State
 
-### 1.9.1. 使用 redux 时，常用到的 api
+### 1.8.1. 使用 redux 时，常用到的 api
 
 - redux.createStore: `createStore(reducer, middleware)`
 - redux.combineReducers
@@ -135,7 +148,7 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 
 > 参考：[Redux 入门教程，应用的状态管理器](https://www.jianshu.com/p/d296a8c34936)
 
-### 1.9.2. redux 数据流的走向
+### 1.8.2. redux 数据流的走向
 
 ![](https://raw.githubusercontent.com/dream-approaching/pictureMaps/master/img/20200915175323.png)
 
@@ -145,7 +158,7 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 - State 一旦有变化，Store 就会调用监听函数
 - listener 可以通过 store.getState()得到当前状态，触发重新渲染 View
 
-### 1.9.3. redux 和 mobx 的区别
+### 1.8.3. redux 和 mobx 的区别
 
 - redux
   - 单一 store
@@ -158,7 +171,7 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
   - 优点：流程相对简单
   - 缺点：过于自由，后期不易维护
 
-### 1.9.4. redux-saga 和 redux-thunk 对比
+### 1.8.4. redux-saga 和 redux-thunk 对比
 
 - redux-saga
   - dispatch 一个简单对象，利用 generator 的思想处理异步
@@ -169,7 +182,7 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
   - 优点: 简单
   - 缺点: action 变得复杂，后期可维护性降低, 协调并发任务比较困难
 
-### 1.9.5. redux-saga 常用的 api
+### 1.8.5. redux-saga 常用的 api
 
 - createSagaMiddleware: 创建一个 Redux middleware，并将 Sagas 连接到 Redux Store。
 - takeEvery: 在发起（dispatch）到 Store 并且匹配 pattern 的每一个 action 上派生一个 saga。
@@ -178,7 +191,7 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 - call: 用于调用异步逻辑，支持 promise 。
 - select: 可以取到 state 数据
 
-### 1.9.6. umi
+### 1.8.6. umi
 
 定位是开发框架，包含工具 + 路由
 
@@ -191,13 +204,23 @@ React16 的 diff 策略采用从链表头部开始比较的算法，是层次遍
 
 > 参考: [Hello！umi](https://zhuanlan.zhihu.com/p/33455048)
 
-## 1.10. 组件的复用
+## 1.9. 组件的复用
 
 - High order component
 - render props
 - custom hooks
 
-## 1.11. react 和 vue 的区别
+# 2. Vue
+# 3. React 和 Vue 异同点
+
+## 3.1. 相同点
+### 3.1.1. hooks
+
+## 3.2. 不同点
+### 3.2.1. hooks
+- react hook底层是基于链表实现，调用的条件是每次组件被render的时候都会顺序执行所有的hooks；
+- vue hook是基于用proxy实现的数据响应机制，只要任何一个更改data的地方，相关的function或者template都会被重新计算，因此避开了react可能遇到的性能上的问题。
+### 3.2.2. 其他
 
 - 监听数据变化的实现原理不同
   - Vue 通过 getter/setter 以及一些函数的劫持，能精确知道数据变化，不需要特别的优化就能达到很好的性能
